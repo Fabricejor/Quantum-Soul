@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quantum Soul
 
-## Getting Started
+Site de présentation pour Quantum Soul.
 
-First, run the development server:
+## Structure du projet
+
+```
+src/
+├── app/                    # Pages Next.js (App Router)
+├── components/            # Composants React
+│   ├── ui/               # Composants UI réutilisables
+│   ├── layout/           # Composants de layout (Header, Footer, etc.)
+│   └── sections/         # Sections de pages (Hero, Features, etc.)
+├── hooks/                # Custom React hooks
+├── lib/                  # Utilitaires et fonctions helper
+├── types/                # Types TypeScript
+├── constants/            # Constantes de l'application
+└── styles/               # Styles additionnels
+
+public/
+├── images/               # Images et assets
+└── fonts/                # Polices personnalisées
+```
+
+## Installation
+
+```bash
+npm install
+```
+
+## Développement
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Technologies
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js 15** - Framework React
+- **TypeScript** - Typage statique
+- **Tailwind CSS** - Styling
+- **ESLint** - Linting
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Bonnes pratiques
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Composants**: Créer des composants réutilisables dans `src/components/ui/`
+- **Types**: Définir les types dans `src/types/`
+- **Constantes**: Centraliser les constantes dans `src/constants/`
+- **Hooks**: Créer des hooks personnalisés dans `src/hooks/`
+- **Utilitaires**: Fonctions helper dans `src/lib/`
 
-## Deploy on Vercel
+## Variables d'environnement
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copier `.env.local.example` vers `.env.local` et remplir les valeurs nécessaires.
