@@ -1,26 +1,109 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-geonova: var(--font-geonova);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.625rem;
+  
+  /* Main Background: #0D0D0D */
+  --background: #0D0D0D;
+  /* Foreground (Text): Adjusted to light for readability on dark bg */
+  --foreground: #EDEDED;
+
+  /* Cards & Popovers - Slightly lighter than BG for depth */
+  --card: #141414;
+  --card-foreground: #EDEDED;
+  --popover: #0D0D0D;
+  --popover-foreground: #EDEDED;
+
+  /* Neon 1: #FF0099 (Pink) */
+  --primary: #FF0099;
+  --primary-foreground: #FFFFFF;
+
+  /* Neon 2: #1E90FF (Blue) */
+  --secondary: #1E90FF;
+  --secondary-foreground: #FFFFFF;
+
+  /* UI Elements */
+  --muted: #262626;
+  --muted-foreground: #A3A3A3;
+  
+  --accent: #1E90FF; /* Using Blue as accent */
+  --accent-foreground: #FFFFFF;
+  
+  --destructive: #FF0055; /* Adjusted to match neon vibe */
+  --destructive-foreground: #FFFFFF;
+
+  /* Borders & Inputs */
+  --border: #333333;
+  --input: #333333;
+  --ring: #FF0099; /* Pink Glow Ring */
+
+  /* Charts */
+  --chart-1: #FF0099;
+  --chart-2: #1E90FF;
+  --chart-3: #9D00FF;
+  --chart-4: #00E5FF;
+  --chart-5: #FFFFFF;
+
+  /* Sidebar */
+  --sidebar: #0D0D0D;
+  --sidebar-foreground: #EDEDED;
+  --sidebar-primary: #FF0099;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #EDEDED;
+  --sidebar-border: #333333;
+  --sidebar-ring: #FF0099;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+  }
 }
