@@ -5,7 +5,7 @@ import { PearlElectronScene } from '@/components/ui/3d-models/pearl-electron'
 export default function Hero() {
   return (
     <div className="relative w-full min-h-[150vh] h-screen overflow-hidden bg-background">
-      {/* <BeamsBackground> */}
+      <BeamsBackground>
         <div className="container mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-center gap-8">
           {/* Text Content - Left (or Top on mobile) */}
           <div className="flex-1 flex justify-center md:justify-end items-center z-20">
@@ -19,7 +19,7 @@ export default function Hero() {
             <PearlElectronScene />
           </div>
         </div>
-      {/* </BeamsBackground> */}
+      </BeamsBackground>
     </div>
   )
 }
