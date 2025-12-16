@@ -1,6 +1,6 @@
 import React from 'react'
 import { BeamsBackground } from '@/components/ui/background/beams-background'
-import { PearlElectronScene } from '@/components/ui/3d-models/pearl-electron'
+import { ImpossibleCubeScene } from '@/components/ui/3d-models/impossible-cube'
 
 export default function Hero() {
   return (
@@ -16,7 +16,7 @@ export default function Hero() {
 
           {/* 3D Model - Right (or Bottom on mobile) */}
           <div className="flex-1 w-full h-[400px] md:h-[600px] flex items-center justify-center md:justify-start z-20">
-            <PearlElectronScene />
+            <ImpossibleCubeScene />
           </div>
         </div>
       </BeamsBackground>
