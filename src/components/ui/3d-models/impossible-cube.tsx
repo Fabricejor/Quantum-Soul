@@ -124,7 +124,7 @@ export function ImpossibleCubeScene() {
           intensity={0.2} 
           color="#1a1a2e"
         />
-        
+
         {/* Animation de flottement */}
         <Float 
           speed={1.5} 
@@ -142,7 +142,7 @@ export function ImpossibleCubeScene() {
           <Bloom 
             luminanceThreshold={0.1}
             luminanceSmoothing={0.9}
-            mipmapBlur
+            mipmapBlur 
             intensity={1.8}
             radius={0.85}
           />
