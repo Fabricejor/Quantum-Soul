@@ -47,7 +47,7 @@ export function BeamsBackground({
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const beamsRef = useRef<Beam[]>([]);
     const animationFrameRef = useRef<number>(0);
-    const MINIMUM_BEAMS = 20; // Changez ce nombre pour modifier la densité des rayons (ex: 10 pour moins, 40 pour plus)
+    const MINIMUM_BEAMS = 15; // Reduced slightly for performance
 
     const opacityMap = {
         subtle: 0.7,
@@ -59,11 +59,13 @@ export function BeamsBackground({
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const ctx = canvas.getContext("2d");
+        const ctx = canvas.getContext("2d", { alpha: false }); // Optimization: hinting we might not need alpha on the context itself if full screen
         if (!ctx) return;
 
         const updateCanvasSize = () => {
-            const dpr = window.devicePixelRatio || 1;
+            // PERFORMANCE FIX: Force DPR to 1. 
+            // High DPI rendering is unnecessary for a blurred background and kills FPS.
+            const dpr = 1;
             canvas.width = window.innerWidth * dpr;
             canvas.height = window.innerHeight * dpr;
             canvas.style.width = `${window.innerWidth}px`;
@@ -77,7 +79,15 @@ export function BeamsBackground({
         };
 
         updateCanvasSize();
-        window.addEventListener("resize", updateCanvasSize);
+        
+        // Debounce resize
+        let resizeTimer: NodeJS.Timeout;
+        const handleResize = () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(updateCanvasSize, 200);
+        };
+        
+        window.addEventListener("resize", handleResize);
 
         function resetBeam(beam: Beam, index: number, totalBeams: number) {
             if (!canvas) return beam;
@@ -92,14 +102,6 @@ export function BeamsBackground({
                 (Math.random() - 0.5) * spacing * 0.5;
             beam.width = 100 + Math.random() * 100; // Largeur du rayon (min 100, + max 100 aléatoire)
             beam.speed = 0.5 + Math.random() * 0.4; // Vitesse de déplacement vertical
-            
-            // COULEUR DU RAYON
-            // Le 'hue' (teinte) est calculé ici. 190 est environ cyan/bleu ciel.
-            // Pour changer la couleur :
-            // Rouge: ~0 ou 360
-            // Vert: ~120
-            // Bleu: ~240
-            // Violet: ~280
             beam.hue = 0 + (index * 70) / totalBeams; 
             beam.opacity = 0.2 + Math.random() * 0.1; // Opacité de base
             return beam;
@@ -117,39 +119,24 @@ export function BeamsBackground({
                 opacityMap[intensity];
 
             const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-
-            // DÉGRADÉ DE COULEUR
-            // Pour avoir du BLANC : Saturation = 0%, Luminosité = 100%
-            // La teinte (beam.hue) n'a plus d'importance quand la saturation est à 0.
             
-            // 0% (début) : Transparent
             gradient.addColorStop(0, `hsla(${beam.hue}, 0%, 100%, 0)`);
-            
-            // 10% : Apparition douce
             gradient.addColorStop(
                 0.1,
                 `hsla(${beam.hue}, 0%, 100%, ${pulsingOpacity * 0.5})`
             );
-            
-            // 40% : Pleine intensité
             gradient.addColorStop(
                 0.4,
                 `hsla(${beam.hue}, 0%, 100%, ${pulsingOpacity})`
             );
-            
-            // 60% : Maintien de l'intensité
             gradient.addColorStop(
                 0.6,
                 `hsla(${beam.hue}, 0%, 100%, ${pulsingOpacity})`
             );
-            
-            // 90% : Disparition progressive
             gradient.addColorStop(
                 0.9,
                 `hsla(${beam.hue}, 0%, 100%, ${pulsingOpacity * 0.5})`
             );
-            
-            // 100% (fin) : Transparent
             gradient.addColorStop(1, `hsla(${beam.hue}, 0%, 100%, 0)`);
 
             ctx.fillStyle = gradient;
@@ -160,8 +147,9 @@ export function BeamsBackground({
         function animate() {
             if (!canvas || !ctx) return;
 
+            // PERFORMANCE FIX: Removed ctx.filter = "blur(35px)"
+            // Using CSS filter instead
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.filter = "blur(35px)";
 
             const totalBeams = beamsRef.current.length;
             beamsRef.current.forEach((beam, index) => {
@@ -182,7 +170,7 @@ export function BeamsBackground({
         animate();
 
         return () => {
-            window.removeEventListener("resize", updateCanvasSize);
+            window.removeEventListener("resize", handleResize);
             if (animationFrameRef.current) {
                 cancelAnimationFrame(animationFrameRef.current);
             }
@@ -199,21 +187,17 @@ export function BeamsBackground({
             <canvas
                 ref={canvasRef}
                 className="absolute inset-0"
-                style={{ filter: "blur(15px)" }}
+                style={{ 
+                    filter: "blur(40px)", // Increased CSS blur to replace canvas blur
+                    opacity: 0.6 
+                }}
             />
 
-            <motion.div
+            {/* Static overlay instead of motion.div to save CPU */}
+            <div
                 className="absolute inset-0 bg-neutral-950/5"
-                animate={{
-                    opacity: [0.05, 0.15, 0.05],
-                }}
-                transition={{
-                    duration: 10,
-                    ease: "easeInOut",
-                    repeat: Number.POSITIVE_INFINITY,
-                }}
                 style={{
-                    backdropFilter: "blur(50px)",
+                    backdropFilter: "blur(20px)",
                 }}
             />
             <div className="relative z-10 flex h-screen w-full items-center justify-center">

@@ -4,7 +4,7 @@ import { ImpossibleCubeScene } from '@/components/ui/3d-models/impossible-cube'
 
 export default function Hero() {
   return (
-    <div className="relative w-full min-h-[120vh] h-screen overflow-hidden bg-background">
+    <div className="relative w-full min-h-[150vh] h-screen overflow-hidden bg-background">
       <BeamsBackground>
         <div className="container mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-center gap-8">
           {/* Text Content - Left (or Top on mobile) */}
