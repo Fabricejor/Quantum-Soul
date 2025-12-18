@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, Float, PerspectiveCamera, Center } from '@react-three/drei'
+import { useGLTF, Float, PerspectiveCamera, Center, OrbitControls } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
@@ -147,6 +147,17 @@ export function ImpossibleCubeScene() {
             radius={0.85}
           />
         </EffectComposer>
+
+        {/* Contrôles pour manipuler l'objet (360 degrés) */}
+        <OrbitControls 
+          enableZoom={true}
+          enablePan={false}
+          enableRotate={true}
+          dampingFactor={0.05}
+          enableDamping={true}
+          minDistance={100}
+          maxDistance={300}
+        />
       </Canvas>
     </div>
   )
