@@ -20,10 +20,10 @@ export default function Navbar() {
 
     // Liens de navigation
     const navLinks = [
-        { name: "Home", href: "/" },
+        { name: "Accueil", href: "/" },
         { name: "Services", href: "/services" },
         { name: "Realisation", href: "/realisation" },
-        { name: "About", href: "/about" },
+        { name: "A propos", href: "/about" },
     ];
 
     return (
@@ -34,16 +34,17 @@ export default function Navbar() {
                     width: "98%",
                     borderRadius: "0px",
                     backgroundColor: "rgba(13, 13, 13, 0)", // Transparent au début
-                    backdropFilter: "blur(0px)",
+                    backdropFilter: "blur(0px) saturate(50%)",
                 }}
                 animate={{
                     width: isScrolled ? "85%" : "98%", // Se rétracte
                     borderRadius: isScrolled ? "9999px" : "12px", // S'arrondit en mode capsule
                     backgroundColor: isScrolled
-                        ? "rgba(13, 13, 13, 0.6)" // Couleur fond semi-transparent
+                        ? "rgba(20, 20, 20, 0.35)" // Plus transparent pour l'effet liquide
                         : "rgba(13, 13, 13, 0)",
-                    backdropFilter: isScrolled ? "blur(12px)" : "blur(0px)", // Effet glass
-                    border: isScrolled ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid rgba(255, 255, 255, 0)",
+                    backdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "blur(0px) saturate(100%)", // Effet glass iOS (blur + saturation)
+                    border: isScrolled ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(255, 255, 255, 0)",
+                    boxShadow: isScrolled ? "0 8px 32px 0 rgba(0, 0, 0, 0.37)" : "none", // Ombre portée pour la profondeur
                     paddingTop: isScrolled ? "0.5rem" : "1rem",
                     paddingBottom: isScrolled ? "0.5rem" : "1rem",
                 }}
