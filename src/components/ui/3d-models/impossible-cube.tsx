@@ -150,7 +150,7 @@ export function ImpossibleCubeScene() {
 
         {/* Contrôles pour manipuler l'objet (360 degrés) */}
         <OrbitControls 
-          enableZoom={true}
+          enableZoom={false}
           enablePan={false}
           enableRotate={true}
           dampingFactor={0.05}
