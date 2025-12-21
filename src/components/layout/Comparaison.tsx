@@ -50,7 +50,7 @@ export default function Comparaison() {
         </div>
 
         {/* Comparison Component */}
-        <div className="w-full max-w-5xl mx-auto p-4 border border-white/10 rounded-3xl bg-black/20 backdrop-blur-sm">
+        <div className="w-full max-w-4xl mx-auto p-4 border border-white/10 rounded-3xl bg-black/20 backdrop-blur-sm">
           <Compare
             secondImage="/images/compare/Graphique_quantum_soul_vert_positive.png"
             firstImage="/images/compare/Graphique_quantum_soul_rouge_negative.png"

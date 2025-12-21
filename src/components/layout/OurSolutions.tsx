@@ -30,7 +30,7 @@ export default function OurSolutions() {
     },
   ];
 
-  return (
+    return (
     <section className="py-24 bg-background relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -93,7 +93,7 @@ export default function OurSolutions() {
             />
           ))}
         </ul>
-      </div>
+        </div>
     </section>
   );
 }

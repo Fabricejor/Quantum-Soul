@@ -52,6 +52,8 @@
     transform: translateX(calc(-100% - var(--gap)));}}
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite
 ;
+  --color-sparkles-color: var(----sparkles-color);
+  --color-gradient-color: var(----gradient-color);
   @keyframes marquee-vertical {
   from {
     transform: translateY(0);}
@@ -113,6 +115,8 @@
   --sidebar-ring: #FF0099;
   --sky-400: #38bdf8;
   --sky-500: #0ea5e9;
+  --gradient-color: #8350e8;
+  --sparkles-color: #8350e8;
 }
 
 @layer base {
@@ -127,4 +131,6 @@
 .dark {
   --sky-400: #38bdf8;
   --sky-500: #0ea5e9;
+  --gradient-color: #8350e8;
+  --sparkles-color: #ffffff;
 }

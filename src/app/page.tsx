@@ -5,6 +5,7 @@ import OurVisions from "@/components/layout/OurVisions";
 import Showcase from "@/components/layout/Showcase";
 import StudyCase from "@/components/layout/StudyCase";
 import Comparaison from "@/components/layout/Comparaison";
+import TheyTrustUs from "@/components/layout/TheyTrustUs";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
     <Showcase/>
     <StudyCase/>
     <Comparaison/>
+    <TheyTrustUs/>
     </>
   );
 }
