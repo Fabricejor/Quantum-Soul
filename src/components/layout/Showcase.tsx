@@ -1,7 +1,6 @@
 "use client";
 
 import { GlowingEffect } from "@/components/ui/effects/glowing-effect";
-import { SparklesCore } from "@/components/ui/effects/sparkles";
 import { HoverBorderGradient } from "@/components/ui/effects/hover-border-gradient";
 import { Cloud, GitBranch, Cpu, MessageSquare } from "lucide-react";
 
@@ -30,23 +29,10 @@ export default function Showcase() {
   ];
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden min-h-screen flex flex-col items-center justify-center">
-      {/* Sparkles Effect */}
-      <div className="absolute inset-0 z-0">
-        <SparklesCore
-          id="tsparticlesshowcase"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={20}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-          speed={0.5}
-        />
-      </div>
+    <section className="py-12 md:py-24 relative overflow-hidden min-h-screen flex flex-col items-center justify-center">
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-20 space-y-4">
+        <div className="text-center mb-10 md:mb-20 space-y-4">
           <div className="flex justify-center mb-6">
             <HoverBorderGradient
               containerClassName="rounded-2xl"
@@ -54,7 +40,7 @@ export default function Showcase() {
               as="div"
               highlightColor="#00E5FF"
             >
-              <div className="w-20 h-20 relative rounded-2xl overflow-hidden shadow-lg">
+              <div className="w-16 h-16 md:w-20 md:h-20 relative rounded-2xl overflow-hidden shadow-lg">
                 <video
                   autoPlay
                   loop
@@ -67,12 +53,12 @@ export default function Showcase() {
               </div>
             </HoverBorderGradient>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-geonova">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-geonova">
             Showcase Technologique
           </h2>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+{/* effet a rajouter  */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-16">
           {technologies.map((tech, index) => (
             <ShowcaseCard
               key={index}
@@ -84,8 +70,23 @@ export default function Showcase() {
         </div>
 
         <div className="flex justify-center">
-          <button className="px-8 py-3 bg-[#4F46E5] hover:bg-[#4338ca] text-white font-medium rounded-lg transition-colors duration-200 shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)]">
-            Découvrir notre stack technologique
+          <button className="relative group px-8 py-3.5 rounded-full text-white font-semibold tracking-wide transition-all duration-300 transform hover:scale-105 active:scale-95 text-xs md:text-base"
+            style={{
+              background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(37, 99, 235, 0.1) 100%)',
+              backdropFilter: 'blur(10px) saturate(180%)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: `
+                0 8px 32px 0 rgba(31, 38, 135, 0.37),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+                inset 0 -1px 0 0 rgba(255, 255, 255, 0.2)
+              `
+            }}
+          >
+            <span className="relative z-10 flex items-center gap-2 drop-shadow-md">
+              Découvrir notre stack technologique
+              <svg className="w-3 h-3 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </span>
           </button>
         </div>
       </div>
@@ -94,15 +95,17 @@ export default function Showcase() {
 }
 
 interface ShowcaseCardProps {
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
 }
 
-const ShowcaseCard = ({ icon: Icon, title, description }: ShowcaseCardProps) => {
+const ShowcaseCard = ({ icon, title, description }: ShowcaseCardProps) => {
+  const Icon = icon;
+  
   return (
-    <div className="relative h-64 bg-background group perspective-1000">
-      <div className="relative h-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-sm p-6 flex flex-col items-center justify-center text-center gap-4 transition-all duration-500 group-hover:transform group-hover:scale-105 group-hover:rotate-x-2 group-hover:shadow-2xl">
+    <div className="relative h-56 md:h-64 bg-transparent group perspective-1000">
+      <div className="relative h-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-sm p-4 md:p-6 flex flex-col items-center justify-center text-center gap-3 md:gap-4 transition-all duration-500 group-hover:transform group-hover:scale-105 group-hover:rotate-x-2 group-hover:shadow-2xl">
         <GlowingEffect
           spread={40}
           glow={true}
@@ -112,10 +115,10 @@ const ShowcaseCard = ({ icon: Icon, title, description }: ShowcaseCardProps) => 
           variant="white"
         />
         
-        <div className="relative z-10 flex flex-col items-center gap-4">
-          <Icon className="w-10 h-10 text-white mb-2" />
-          <h3 className="text-xl font-bold text-white">{title}</h3>
-          <p className="text-sm text-gray-400 leading-relaxed">
+        <div className="relative z-10 flex flex-col items-center gap-3 md:gap-4">
+          <Icon className="w-8 h-8 md:w-10 md:h-10 text-white mb-1 md:mb-2" />
+          <h3 className="text-lg md:text-xl font-bold text-white">{title}</h3>
+          <p className="text-xs md:text-sm text-gray-400 leading-relaxed">
             {description}
           </p>
         </div>

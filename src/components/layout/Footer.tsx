@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react'
-import { SparklesCore } from "@/components/ui/effects/sparkles";
 import { ArrowRight, Twitter, Linkedin, Instagram, Github } from 'lucide-react';
 import Limitation from './Limitation';
 import { usePathname } from 'next/navigation';
@@ -34,13 +33,13 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="relative w-full overflow-hidden flex flex-col justify-between bg-background pt-20">
+        <footer className="relative w-full overflow-hidden flex flex-col justify-between pt-20">
 
             {/* Top Section: Newsletter & Marquee - Only on Home Page */}
             {isHomePage && (
                 <div className="container mx-auto px-4 relative z-10 flex flex-col items-center mb-32">
                     <div className="text-center space-y-8 w-full max-w-3xl">
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-geonova leading-tight">
+                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white font-geonova leading-tight">
                             Rejoignez notre newsletter<br />
                             <span className="text-white/60">et participez à l'aventure</span>
                         </h2>
@@ -63,20 +62,6 @@ export default function Footer() {
                 </div>
             )}
 
-            {/* Sparkles Background Effect */}
-            <div className="absolute inset-0 z-0 h-[600px] pointer-events-none">
-                <SparklesCore
-                    id="tsparticlesfooter"
-                    background="transparent"
-                    minSize={0.6}
-                    maxSize={1.4}
-                    particleDensity={50}
-                    className="w-full h-full"
-                    particleColor="#00E5FF"
-                    speed={0.5}
-                />
-            </div>
-
             {/* Planet / Wave Effect + Bottom Content */}
             <div className="relative w-full mt-auto">
 
@@ -87,11 +72,24 @@ export default function Footer() {
                 <div className="absolute -top-[100px] left-1/2 -translate-x-1/2 w-[150%] md:w-[120%] aspect-[2/1] rounded-[50%] border-t border-white/10 bg-black shadow-[0_-20px_50px_-20px_rgba(0,229,255,0.15)] z-10" />
 
                 {/* Footer Content inside the "Planet" */}
-                <div className="relative z-20 bg-black pt-32 pb-12 px-4 md:px-8">
-                    <div className="container mx-auto flex flex-col items-center gap-12">
+                <div className="relative z-20 bg-black pt-20 md:pt-32 pb-32 md:pb-12 px-4 md:px-8 overflow-hidden">
+                    
+                    {/* Planet Image Decoration - Behind content but above black bg */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[800px] pointer-events-none select-none z-0 flex items-center justify-center opacity-80">
+                        <div className="relative w-48 h-48 md:w-96 md:h-96 animate-spin-slow">
+                            <Image
+                                src="/images/logo & icons/planet.png"
+                                alt="Planet Decoration"
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="container mx-auto flex flex-col items-center gap-12 relative z-10">
                         
                         {/* Logo */}
-                        <div className="relative w-32 h-16 md:w-40 md:h-20 opacity-80 hover:opacity-100 transition-opacity">
+                        <div className="relative w-24 h-12 md:w-40 md:h-20 opacity-80 hover:opacity-100 transition-opacity">
                             <Image
                                 src="/images/logo & icons/Logo Q Blanc Icone.png"
                                 alt="Quantum Soul Logo"
@@ -101,7 +99,7 @@ export default function Footer() {
                         </div>
 
                         {/* Navigation Links */}
-                        <nav className="flex flex-wrap justify-center gap-8 md:gap-12">
+                        <nav className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
@@ -130,7 +128,7 @@ export default function Footer() {
 
                             {/* Legal Links & Copyright */}
                             <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-xs text-white/40 border-t border-white/10 pt-8 w-full justify-center">
-                                <span>© 2025 Quantum Soul. Tous droits réservés.</span>
+                                <span>© 2025 Quantum Soul. Where AI meets the Human spirit.</span>
                                 <div className="flex gap-6">
                                     {legalLinks.map((link) => (
                                         <Link

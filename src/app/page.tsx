@@ -6,18 +6,31 @@ import Showcase from "@/components/layout/Showcase";
 import StudyCase from "@/components/layout/StudyCase";
 import Comparaison from "@/components/layout/Comparaison";
 import TheyTrustUs from "@/components/layout/TheyTrustUs";
+import { SparklesCore } from "@/components/ui/effects/sparkles";
 
 export default function Home() {
   return (
     <>
-    <Hero/>
-    <Limitation/>
-    <OurSolutions/>
-    <OurVisions/>
-    <Showcase/>
-    <StudyCase/>
-    <Comparaison/>
-    <TheyTrustUs/>
+      <div className="fixed inset-0 z-[-1] pointer-events-none">
+        <SparklesCore
+          id="tsparticlesglobal"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={20}
+          className="w-full h-full"
+          particleColor="#00E5FF"
+          speed={0.5}
+        />
+      </div>
+      <Hero/>
+      <Limitation/>
+      <OurSolutions/>
+      <OurVisions/>
+      <Showcase/>
+      <StudyCase/>
+      <Comparaison/>
+      <TheyTrustUs/>
     </>
   );
 }

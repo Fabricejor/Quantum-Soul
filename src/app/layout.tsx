@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ClientLayout from "@/components/layout/ClientLayout";
 
 const geonova = localFont({
   src: "../../public/fonts/geonova-variable.ttf",
@@ -35,9 +36,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${geonova.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer/>
+        <ClientLayout>
+          <Navbar />
+          {children}
+          <Footer/>
+        </ClientLayout>
       </body>
     </html>
   );
