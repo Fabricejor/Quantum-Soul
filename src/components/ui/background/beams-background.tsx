@@ -38,6 +38,12 @@ function createBeam(width: number, height: number): Beam {
     };
 }
 
+const opacityMap = {
+    subtle: 0.7,
+    medium: 0.85,
+    strong: 1,
+} as const;
+
 export function BeamsBackground({
     className,
     intensity = "strong",
@@ -47,12 +53,6 @@ export function BeamsBackground({
     const beamsRef = useRef<Beam[]>([]);
     const animationFrameRef = useRef<ReturnType<typeof requestAnimationFrame>>(0);
     const MINIMUM_BEAMS = 15; // Reduced slightly for performance
-
-    const opacityMap = {
-        subtle: 0.7,
-        medium: 0.85,
-        strong: 1,
-    };
 
     useEffect(() => {
         const canvas = canvasRef.current;
