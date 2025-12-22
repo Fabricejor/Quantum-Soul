@@ -46,11 +46,19 @@
   --color-sky-500: var(----sky-500);
   --color-sky-400: var(----sky-400);
   @keyframes marquee {
+  from {
+    transform: translateX(0);}
   to {
-    transform: translateX(-50%);
-    }
-  }
-}
+    transform: translateX(calc(-100% - var(--gap)));}}
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite
+;
+  --color-sparkles-color: var(----sparkles-color);
+  --color-gradient-color: var(----gradient-color);
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);}
+  to {
+    transform: translateY(calc(-100% - var(--gap)));}}}
 
 :root {
   --radius: 0.625rem;
@@ -107,6 +115,8 @@
   --sidebar-ring: #FF0099;
   --sky-400: #38bdf8;
   --sky-500: #0ea5e9;
+  --gradient-color: #8350e8;
+  --sparkles-color: #8350e8;
 }
 
 @layer base {
@@ -121,4 +131,6 @@
 .dark {
   --sky-400: #38bdf8;
   --sky-500: #0ea5e9;
+  --gradient-color: #8350e8;
+  --sparkles-color: #ffffff;
 }

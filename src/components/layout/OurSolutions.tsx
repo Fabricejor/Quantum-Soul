@@ -2,7 +2,6 @@
 
 import { GlowingEffect } from "@/components/ui/effects/glowing-effect";
 import { HoverBorderGradient } from "@/components/ui/effects/hover-border-gradient";
-import { SparklesCore } from "@/components/ui/effects/sparkles";
 import { Bot, ChartBar, Workflow, Network } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -13,11 +12,7 @@ export default function OurSolutions() {
       title: "Automatisation des tâches",
       description: "Optimisez vos processus et gagnez en efficacité en automatisant les tâches répétitives et complexes.",
     },
-    {
-      icon: Network,
-      title: "Intégration IA & API",
-      description: "Connectez vos systèmes et applications pour les enrichir avec des capacités d'intelligence artificielle avancées.",
-    },
+    
     {
       icon: Bot,
       title: "Agents conversationnels",
@@ -28,24 +23,18 @@ export default function OurSolutions() {
       title: "Analyse prédictive",
       description: "Utilisez vos données pour anticiper les tendances futures et prendre des décisions stratégiques éclairées.",
     },
+    {
+      icon: Network,
+      title: "Intégration IA & API",
+      description: "Connectez vos systèmes et applications pour les enrichir avec des capacités d'intelligence artificielle avancées.",
+    },
   ];
 
-  return (
-    <section className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <SparklesCore
-          id="tsparticlesfullpage"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={20}
-          className="w-full h-full"
-          particleColor="#00E5FF"
-          speed={0.5}
-        />
-      </div>
+    return (
+    <section className="py-12 md:py-24 relative overflow-hidden">
+      
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-10 md:mb-16 space-y-4">
           <div className="flex justify-center mb-6">
             <HoverBorderGradient
               containerClassName="rounded-2xl"
@@ -53,7 +42,7 @@ export default function OurSolutions() {
               as="div"
               highlightColor="#00E5FF"
             >
-              <div className="w-20 h-20 relative rounded-2xl overflow-hidden">
+              <div className="w-16 h-16 md:w-20 md:h-20 relative rounded-2xl overflow-hidden">
                 <video
                   autoPlay
                   loop
@@ -66,11 +55,11 @@ export default function OurSolutions() {
               </div>
             </HoverBorderGradient>
           </div>
-          <h3 className="text-sm font-medium text-white/60 uppercase tracking-wider">
+          <h3 className="text-xs md:text-sm font-medium text-white/60 uppercase tracking-wider">
             Nos solutions IA et automatisation
           </h3>
-          <h2 className="text-4xl md:text-5xl font-bold text-white font-geonova">
-            Des solutions sur mesure propulsées par l'IA
+          <h2 className="text-2xl md:text-3xl font-bold text-white font-geonova px-2">
+            Des solutions sur mesure propulsées par l&apos;IA
           </h2>
         </div>
 
@@ -93,7 +82,7 @@ export default function OurSolutions() {
             />
           ))}
         </ul>
-      </div>
+        </div>
     </section>
   );
 }
@@ -107,7 +96,7 @@ interface GridItemProps {
 
 const GridItem = ({ area, icon, title, description }: GridItemProps) => {
   return (
-    <li className={cn("min-h-[14rem] list-none", area)}>
+    <li className={cn("min-h-[12rem] md:min-h-[14rem] list-none", area)}>
       <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-white/10 bg-white/5 p-2 md:rounded-[1.5rem] md:p-3">
         <GlowingEffect
           spread={40}
@@ -123,7 +112,7 @@ const GridItem = ({ area, icon, title, description }: GridItemProps) => {
               {icon}
             </div>
             <div className="space-y-3">
-              <h3 className="pt-0.5 text-xl/[1.375rem] font-semibold font-sans -tracking-4 md:text-2xl/[1.875rem] text-balance text-white">
+              <h3 className="pt-0.5 text-lg md:text-xl/[1.375rem] font-semibold font-sans -tracking-4 md:text-2xl/[1.875rem] text-balance text-white">
                 {title}
               </h3>
               <p className="font-sans text-sm/[1.125rem] md:text-base/[1.375rem] text-white/60">

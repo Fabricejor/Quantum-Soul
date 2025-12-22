@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-slot": "^1.2.4",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.2",
@@ -22,7 +23,7 @@
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.555.0",
     "motion": "^12.23.26",
-    "next": "15.5.5",
+    "next": "^15.5.9",
     "postprocessing": "^6.38.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
