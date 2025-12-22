@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface AnimatedGradientBackgroundProps {
@@ -46,7 +45,7 @@ export function BeamsBackground({
 }: AnimatedGradientBackgroundProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const beamsRef = useRef<Beam[]>([]);
-    const animationFrameRef = useRef<number>(0);
+    const animationFrameRef = useRef<ReturnType<typeof requestAnimationFrame>>(0);
     const MINIMUM_BEAMS = 15; // Reduced slightly for performance
 
     const opacityMap = {
@@ -81,7 +80,7 @@ export function BeamsBackground({
         updateCanvasSize();
         
         // Debounce resize
-        let resizeTimer: NodeJS.Timeout;
+        let resizeTimer: ReturnType<typeof setTimeout>;
         const handleResize = () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(updateCanvasSize, 200);
@@ -89,7 +88,7 @@ export function BeamsBackground({
         
         window.addEventListener("resize", handleResize);
 
-        function resetBeam(beam: Beam, index: number, totalBeams: number) {
+        function resetBeam(beam: Beam, index: number) {
             if (!canvas) return beam;
             
             const column = index % 3;
@@ -152,14 +151,13 @@ export function BeamsBackground({
             // Using CSS filter instead
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            const totalBeams = beamsRef.current.length;
             beamsRef.current.forEach((beam, index) => {
                 beam.y -= beam.speed;
                 beam.pulse += beam.pulseSpeed;
 
                 // Reset beam when it goes off screen
                 if (beam.y + beam.length < -100) {
-                    resetBeam(beam, index, totalBeams);
+                    resetBeam(beam, index);
                 }
 
                 drawBeam(ctx, beam);

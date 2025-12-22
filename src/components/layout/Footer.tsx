@@ -41,7 +41,7 @@ export default function Footer() {
                     <div className="text-center space-y-8 w-full max-w-3xl">
                         <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white font-geonova leading-tight">
                             Rejoignez notre newsletter<br />
-                            <span className="text-white/60">et participez à l'aventure</span>
+                            <span className="text-white/60">et participez à l&apos;aventure</span>
                         </h2>
 
                         <div className="relative w-full max-w-md mx-auto">

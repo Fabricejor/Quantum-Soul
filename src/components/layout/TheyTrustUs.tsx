@@ -81,7 +81,7 @@ const TestimonialCard = ({
           <p className="text-xs font-medium text-white/40">{username}</p>
         </div>
       </div>
-      <blockquote className="mt-3 md:mt-4 text-xs md:text-sm text-white/80 leading-relaxed font-light">"{body}"</blockquote>
+      <blockquote className="mt-3 md:mt-4 text-xs md:text-sm text-white/80 leading-relaxed font-light">&quot;{body}&quot;</blockquote>
     </figure>
   );
 };
@@ -93,10 +93,10 @@ export default function TheyTrustUs() {
       <div className="container relative z-10 flex flex-col items-center">
         <div className="text-center mb-8 space-y-4 px-4">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-geonova text-justify">
-            L'impact de Quantum Soul : Retours d'expérience
+            L&apos;impact de Quantum Soul : Retours d&apos;expérience
           </h2>
           <p className="text-white/60 text-sm md:text-base max-w-2xl mx-auto">
-            Découvrez comment nous redéfinissons les standards de l'industrie grâce à la confiance de nos partenaires.
+            Découvrez comment nous redéfinissons les standards de l&apos;industrie grâce à la confiance de nos partenaires.
           </p>
         </div>
 

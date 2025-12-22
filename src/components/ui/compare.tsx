@@ -4,7 +4,7 @@ import { SparklesCore } from "@/components/ui/effects/sparkles";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { IconDotsVertical } from "@tabler/icons-react";
-
+import Image from "next/image";
 interface CompareProps {
   firstImage?: string;
   secondImage?: string;
@@ -35,7 +35,7 @@ export const Compare = ({
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const [isMouseOver, setIsMouseOver] = useState(false);
-
+console.log(isMouseOver);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
 
   const startAutoplay = useCallback(() => {
@@ -87,6 +87,7 @@ export const Compare = ({
     (clientX: number) => {
       if (slideMode === "drag") {
         setIsDragging(true);
+        console.log("clientX", clientX);
       }
     },
     [slideMode]
@@ -206,7 +207,7 @@ export const Compare = ({
               }}
               transition={{ duration: 0 }}
             >
-              <img
+              <Image
                 alt="first image"
                 src={firstImage}
                 className={cn(

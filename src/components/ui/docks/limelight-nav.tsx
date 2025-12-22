@@ -4,7 +4,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { House, Briefcase, Trophy, Info } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 // Mapping des icônes pour les liens spécifiques
 const icons = [
@@ -77,8 +76,7 @@ export const LimelightNav = () => {
                 <Image
                     src="/images/logo & icons/Logo Q Blanc Icone.png"
                     alt="Logo Central"
-                    width={40}
-                    height={40}
+                    fill
                     className="object-contain relative z-10 scale-110"
                 />
             </div>
