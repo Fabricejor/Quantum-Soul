@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, ThreeElements, useFrame } from '@react-three/fiber'
 import { useGLTF, Float, PerspectiveCamera, Center, OrbitControls } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
@@ -25,7 +25,9 @@ function isCyanOrBlue(color: THREE.Color): boolean {
 }
 
 // Version alternative qui détecte aussi par couleur originale
-function ModelWithEdges(props: any) {
+type ModelWithEdgesProps = Omit<ThreeElements['primitive'], 'object'>
+
+function ModelWithEdges(props: ModelWithEdgesProps) {
   const { scene } = useGLTF('/3d/impossible_cube.glb')
   const groupRef = useRef<THREE.Group>(null)
   
