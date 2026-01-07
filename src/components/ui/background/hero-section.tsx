@@ -1,9 +1,16 @@
 'use client';
 import React, { useRef } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { TextureLoader, Shape, ExtrudeGeometry } from 'three';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Shape, ExtrudeGeometry, Group } from 'three';
 
-const Box = ({ position, rotation }) => {
+type Vec3 = [number, number, number]
+
+interface BoxProps {
+    position: Vec3
+    rotation: Vec3
+}
+
+const Box = ({ position, rotation }: BoxProps) => {
     const shape = new Shape();
     const angleStep = Math.PI * 0.5;
     const radius = 1;
@@ -64,7 +71,7 @@ const Box = ({ position, rotation }) => {
 };
 
 const AnimatedBoxes = () => {
-    const groupRef = useRef();
+    const groupRef = useRef<Group | null>(null);
 
     useFrame((state, delta) => {
         if (groupRef.current) {
@@ -72,15 +79,18 @@ const AnimatedBoxes = () => {
         }
     });
 
-    const boxes = Array.from({ length: 50 }, (_, index) => ({
-        position: [(index - 25) * 0.75, 0, 0],
-        rotation: [
-            (index - 10) * 0.1,
-            Math.PI / 2,
-            0
-        ],
-        id: index
-    }));
+    const boxes: { position: Vec3; rotation: Vec3; id: number }[] = Array.from(
+        { length: 50 },
+        (_, index) => ({
+            position: [(index - 25) * 0.75, 0, 0] as Vec3,
+            rotation: [
+                (index - 10) * 0.1,
+                Math.PI / 2,
+                0,
+            ] as Vec3,
+            id: index,
+        }),
+    );
 
     return (
         <group ref={groupRef}>
@@ -96,7 +106,7 @@ const AnimatedBoxes = () => {
 };
 
 export const Scene = () => {
-    const [cameraPosition, setCameraPosition] = React.useState([5, 5, 20]);
+    const [cameraPosition] = React.useState<[number, number, number]>([5, 5, 20]);
 
     return (
         <div className="w-full h-full z-0">
