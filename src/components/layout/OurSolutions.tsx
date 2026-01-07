@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { GlowingEffect } from "@/components/ui/effects/glowing-effect";
 import { HoverBorderGradient } from "@/components/ui/effects/hover-border-gradient";
 import { Bot, ChartBar, Workflow, Network } from "lucide-react";
@@ -30,7 +31,30 @@ export default function OurSolutions() {
     },
   ];
 
-    return (
+  const videoRef = React.useRef<HTMLDivElement | null>(null);
+  const [isVideoVisible, setIsVideoVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!videoRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVideoVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(videoRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
     <section className="py-12 md:py-24 relative overflow-hidden">
       
       <div className="container mx-auto px-4 relative z-10">
@@ -42,16 +66,21 @@ export default function OurSolutions() {
               as="div"
               highlightColor="#00E5FF"
             >
-              <div className="w-16 h-16 md:w-20 md:h-20 relative rounded-2xl overflow-hidden">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/video/fuse abstract video qs icone.mp4" type="video/mp4" />
-                </video>
+              <div
+                ref={videoRef}
+                className="w-16 h-16 md:w-20 md:h-20 relative rounded-2xl overflow-hidden"
+              >
+                {isVideoVisible && (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    <source src="/video/fuse abstract video qs icone.mp4" type="video/mp4" />
+                  </video>
+                )}
               </div>
             </HoverBorderGradient>
           </div>

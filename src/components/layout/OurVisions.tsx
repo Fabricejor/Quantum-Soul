@@ -30,6 +30,9 @@ const checkpoints = [
 
 export default function OurVisions() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLDivElement>(null);
+  const [isVideoVisible, setIsVideoVisible] = React.useState(false);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -40,6 +43,26 @@ export default function OurVisions() {
     damping: 30,
     restDelta: 0.001,
   });
+
+  React.useEffect(() => {
+    if (!videoRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVideoVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(videoRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     // Height adjusted for mobile to be less tall if needed, but keeping 300vh for scroll length is fine
@@ -56,16 +79,21 @@ export default function OurVisions() {
               as="div"
               highlightColor="#00E5FF"
             >
-              <div className="w-16 h-16 md:w-24 md:h-24 relative rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,229,255,0.3)]">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/video/abstract video qs -home - section 3.mp4" type="video/mp4" />
-                </video>
+              <div
+                ref={videoRef}
+                className="w-16 h-16 md:w-24 md:h-24 relative rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,229,255,0.3)]"
+              >
+                {isVideoVisible && (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    <source src="/video/abstract video QS.mp4" type="video/mp4" />
+                  </video>
+                )}
               </div>
             </HoverBorderGradient>
 

@@ -25,7 +25,7 @@ function isCyanOrBlue(color: THREE.Color): boolean {
 }
 
 // Version alternative qui détecte aussi par couleur originale
-function ModelWithEdges(props: React.HTMLAttributes<HTMLDivElement>) {
+function ModelWithEdges(props: any) {
   const { scene } = useGLTF('/3d/impossible_cube.glb')
   const groupRef = useRef<THREE.Group>(null)
   
@@ -95,7 +95,7 @@ function ModelWithEdges(props: React.HTMLAttributes<HTMLDivElement>) {
   return <primitive ref={groupRef} object={scene} {...props} />
 }
 
-export function ImpossibleCubeScene(props: React.HTMLAttributes<HTMLDivElement>) {
+export function ImpossibleCubeScene() {
   return (
     <div className="w-full h-full min-h-[400px]">
       <Canvas 
@@ -133,7 +133,7 @@ export function ImpossibleCubeScene(props: React.HTMLAttributes<HTMLDivElement>)
           floatingRange={[-0.15, 0.15]}
         >
           <Center>
-            <ModelWithEdges {...props} />
+            <ModelWithEdges scale={0.15} />
           </Center>
         </Float>
 
