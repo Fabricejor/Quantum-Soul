@@ -3,7 +3,7 @@ import { Scene } from "@/components/ui/background/hero-section";
 
 export default function RealisationHero() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-black text-white">
+    <section className="relative min-h-screen w-full overflow-hidden bg-background text-white">
       {/* Background 3D scene */}
       <div className="pointer-events-none absolute inset-0">
         <Scene />
@@ -20,7 +20,8 @@ export default function RealisationHero() {
             Découvrez toutes nos réalisations
           </h1>
           <p className="mx-auto max-w-2xl text-sm md:text-base text-white/70">
-            Nos Services — Des solutions digitales conçues pour dépasser le futur.
+            Explorez les projets que nous avons conçus avec nos clients&nbsp;:
+            expériences numériques, automatisations et solutions IA pensées pour la performance.
           </p>
           
           {/* Call to Action Button - Liquid Glass Style */}
