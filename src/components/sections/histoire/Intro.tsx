@@ -55,11 +55,11 @@ export default function Intro() {
               </p>
               
               <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-6 text-justify">
-                Au départ, une petite équipe passionnée par l’IA et le développement web s’est regroupée autour d’un objectif : créer des solutions intelligentes accessibles à tous. Nous voulions briser la barrière entre la complexité technologique et l'expérience utilisateur fluide.
+                Au départ, une petite équipe passionnée par l’IA et le développement web s’est regroupée autour d’un objectif : créer des solutions intelligentes accessibles à tous. Nous voulions briser la barrière entre la complexité technologique et l&apos;expérience utilisateur fluide.
               </p>
               
               <p className="text-lg md:text-xl text-white/80 leading-relaxed text-justify">
-                Ce qui était une idée est devenu un mouvement de transformation digitale. Aujourd'hui, nous accompagnons les visionnaires qui souhaitent repousser les limites de ce qui est possible sur le web, en fusionnant esthétique futuriste et puissance algorithmique.
+                Ce qui était une idée est devenu un mouvement de transformation digitale. Aujourd&apos;hui, nous accompagnons les visionnaires qui souhaitent repousser les limites de ce qui est possible sur le web, en fusionnant esthétique futuriste et puissance algorithmique.
               </p>
             </motion.div>
           </div>

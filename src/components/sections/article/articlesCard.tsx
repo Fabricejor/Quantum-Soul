@@ -51,7 +51,7 @@ export default function ArticlesCard({
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-white font-semibold border-b border-white/30 pb-1 hover:border-white transition-colors group"
         >
-          Voir l'article complet
+          Voir l&apos;article complet
           <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
         </a>
       </div>
