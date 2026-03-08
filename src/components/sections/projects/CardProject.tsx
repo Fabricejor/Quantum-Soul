@@ -11,7 +11,7 @@ interface CardProjectProps {
   subtitle: string;
   coverImage: string;
   span?: string;
-  rowSpan?: string;
+  aspectRatio?: string;
   onClick?: () => void;
 }
 
@@ -20,19 +20,19 @@ export default function CardProject({
   subtitle,
   coverImage,
   span = "md:col-span-1",
-  rowSpan,
+  aspectRatio = "aspect-video",
   onClick,
 }: CardProjectProps) {
   return (
     <CardContainer
-      containerClassName={cn("w-full h-full !py-0 !flex !items-stretch", span, rowSpan)}
+      containerClassName={cn("w-full h-full !py-0 !flex !items-stretch", span)}
       className="w-full h-full"
     >
       <CardBody className="w-full h-full">
         <div
           className={cn(
-            "group relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-white/20 cursor-pointer w-full h-full",
-            span
+            "group relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-white/20 cursor-pointer w-full",
+            aspectRatio
           )}
           onClick={onClick}
         >

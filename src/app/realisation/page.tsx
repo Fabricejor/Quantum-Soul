@@ -7,6 +7,8 @@ import Projects from "@/components/sections/projects/Projects";
 import { FilterProvider } from "@/contexts/FilterContext";
 import { Marquee } from "@/components/ui/carousel/marquee";
 import Image from "next/image";
+import Articles from "@/components/sections/article/articles";
+import { SparklesCore } from "@/components/ui/effects/sparkles";
 
 const logos = [
   {
@@ -31,6 +33,18 @@ const RealisationPage = () => {
   return (
     <FilterProvider>
       <div>
+        <div className="fixed inset-0 z-[-1] pointer-events-none">
+          <SparklesCore
+            id="tsparticlesrealisation"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={20}
+            className="w-full h-full"
+            particleColor="#00E5FF"
+            speed={0.5}
+          />
+        </div>
         <RealisationHero />
         <Marquee speed={30} className="!mt-0 py-8" pauseOnHover>
           {logos.map((logo, index) => (
@@ -48,6 +62,7 @@ const RealisationPage = () => {
         </Marquee>
         <Filter />
         <Projects />
+        <Articles />
       </div>
     </FilterProvider>
   );
