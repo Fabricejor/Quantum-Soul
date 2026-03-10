@@ -27,8 +27,8 @@ export default function Projects() {
 
   return (
     <section className="relative w-full px-4 py-8 md:py-16">
-      <div className="mx-auto max-w-4xl">
-        <div className="grid grid-cols-1 gap-12">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project) => (
             <CardProject
               key={project.id}

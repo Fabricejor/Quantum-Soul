@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Compare } from "@/components/ui/compare";
+import { Compare } from "@/components/ui/animation/compare";
 import { HoverBorderGradient } from "@/components/ui/effects/hover-border-gradient";
 
 export default function Comparaison() {

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Timeline } from "@/components/ui/timeline";
+import { Timeline } from "@/components/ui/animation/timeline";
 
 export default function HistoireTimeline() {
   const data = [

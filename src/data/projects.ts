@@ -31,6 +31,25 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "Groupe-SIGS",
+    title: "Refonte pour Groupe SIGS4",
+    subtitle: "Une nouvelle identité visuelle et une expérience utilisateur optimisée.",
+    coverImage: "/images/projets/Groupe SIGS/Groupe Sigs Cover.png",
+    category: "Projets",
+    span: "md:col-span-1",
+    aspectRatio: "aspect-video",
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.`,
+    link: "https://groupesigs.vercel.app",
+    gallery: [
+      { src: "/images/projets/Groupe SIGS/Groupe Sigs 1.png", description: "Page d'accueil" },
+      { src: "/images/projets/Groupe SIGS/Groupe Sigs 2.png", description: "Page de contact" },
+      { src: "/images/projets/Groupe SIGS/Groupe Sigs 3.png", description: "Page de blog" },
+      { src: "/images/projets/Groupe SIGS/Groupe Sigs 4.png", description: "Page de blog" },
+    ],
+  },
+  {
     id: "la-fabrique-artisanal",
     title: "La Fabrique Artisanal",
     subtitle: "Site e-commerce pour produits artisanaux avec intégration TikTok",
@@ -70,7 +89,7 @@ export const projects: Project[] = [
     subtitle: "Application mobile de gestion de rendez-vous médicaux",
     coverImage: "/images/projets/mobile app sante/Cover Prise de rendez vous.jpeg",
     category: "Projets",
-    span: "md:col-span-1 max-w-sm mx-auto",
+    span: "md:col-span-2 max-w-sm mx-auto",
     aspectRatio: "aspect-[9/16] md:aspect-[3/4]",
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
