@@ -2,6 +2,7 @@ import React from "react";
 import AboutHero from "@/components/sections/heros/aboutHero";
 import Intro from "@/components/sections/histoire/Intro";
 import HistoireTimeline from "@/components/sections/histoire/Timeline";
+import NotreTeam from "@/components/sections/histoire/NotreTeam";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
 
 export default function page() {
@@ -21,6 +22,7 @@ export default function page() {
       </div>
       <AboutHero />
       <Intro />
+      <NotreTeam />
       <HistoireTimeline />
     </main>
   );
