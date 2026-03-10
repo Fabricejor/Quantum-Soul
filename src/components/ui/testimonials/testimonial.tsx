@@ -110,10 +110,6 @@ const AnimatedTestimonials = ({
                       height={500}
                       draggable={false}
                       className="h-full w-full rounded-3xl object-cover shadow-2xl"
-                      onError={(e) => {
-                        e.currentTarget.src = `https://placehold.co/500x500/e2e8f0/64748b?text=${testimonial.name.charAt(0)}`;
-                        e.currentTarget.onerror = null;
-                      }}
                     />
                   </motion.div>
                 ))}
@@ -141,7 +137,7 @@ const AnimatedTestimonials = ({
                         {testimonials[active].designation}
                     </p>
                     <motion.p className="mt-8 text-lg text-slate-700 dark:text-slate-300">
-                        "{testimonials[active].quote}"
+                        &quot;{testimonials[active].quote}&quot;
                     </motion.p>
                 </div>
             </motion.div>

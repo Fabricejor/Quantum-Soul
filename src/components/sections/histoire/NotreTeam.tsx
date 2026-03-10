@@ -62,7 +62,7 @@ const teamMembers: TeamMember[] = [
 
 export default function NotreTeam() {
     const [active, setActive] = useState(0);
-    const [autoplay, setAutoplay] = useState(true);
+    const [autoplay] = useState(true);
 
     const handleNext = useCallback(() => {
         setActive((prev) => (prev + 1) % teamMembers.length);
