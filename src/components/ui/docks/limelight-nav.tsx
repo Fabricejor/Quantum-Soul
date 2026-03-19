@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { House, Briefcase, Trophy, Info } from 'lucide-react';
 
@@ -14,6 +15,7 @@ const icons = [
 ];
 
 export const LimelightNav = () => {
+  const pathname = usePathname();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isReady, setIsReady] = useState(false);
   // On ne suit que les 4 liens, le logo est séparé
@@ -26,6 +28,16 @@ export const LimelightNav = () => {
     { name: "Realisation", href: "/realisation" },
     { name: "A propos", href: "/about" },
   ];
+
+  // Synchroniser l'index actif avec l'URL
+  useEffect(() => {
+    const currentIndex = navLinks.findIndex(link => 
+      pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href))
+    );
+    if (currentIndex !== -1) {
+      setActiveIndex(currentIndex);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const limelight = limelightRef.current;

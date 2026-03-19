@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { LimelightNav } from "@/components/ui/docks/limelight-nav";
@@ -9,6 +10,7 @@ import { LimelightNav } from "@/components/ui/docks/limelight-nav";
 export default function Navbar() {
     const { scrollY } = useScroll();
     const [isScrolled, setIsScrolled] = useState(false);
+    const pathname = usePathname();
 
     // Détecter le scroll pour déclencher l'animation
     useMotionValueEvent(scrollY, "change", (latest) => {
@@ -78,15 +80,22 @@ export default function Navbar() {
 
                     {/* LIENS (Centre) */}
                     <div className="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 uppercase tracking-wider font-geonova"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
+                        {navLinks.map((link) => {
+                            const isActive = pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href));
+                            return (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={`text-sm font-medium transition-all duration-300 uppercase tracking-wider font-geonova ${
+                                        isActive 
+                                            ? "text-cyan-400 -translate-y-1 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" 
+                                            : "text-muted-foreground hover:text-primary hover:-translate-y-0.5"
+                                    }`}
+                                >
+                                    {link.name}
+                                </Link>
+                            );
+                        })}
                     </div>
 
                     {/* BOUTON (Droite) */}
