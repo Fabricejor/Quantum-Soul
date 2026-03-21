@@ -80,8 +80,21 @@ export default function CircuitServices() {
         {/* ANIMATION "CARTE 3D / CIRCUIT" */}
         <div className="relative w-full h-[400px] md:h-[500px] mb-24">
           
-          {/* Lignes SVG animées (Connexions) */}
+          {/* Lignes SVG animées (Connexions) - CSS animation pour éviter les conflits Web Animations API */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none">
+            <defs>
+              {nodes.map((node) => (
+                <style key={`anim-${node.id}`}>{`
+                  @keyframes dash-flow-${node.id} {
+                    from { stroke-dashoffset: 0; }
+                    to { stroke-dashoffset: -60; }
+                  }
+                  .flow-line-${node.id} {
+                    animation: dash-flow-${node.id} 3s linear ${node.delay}s infinite;
+                  }
+                `}</style>
+              ))}
+            </defs>
             {nodes.map((node) => (
               <g key={`line-${node.id}`}>
                 {/* Ligne de fond (statique, semi-transparente) */}
@@ -91,23 +104,16 @@ export default function CircuitServices() {
                   stroke="rgba(255,255,255,0.05)" 
                   strokeWidth="2" 
                 />
-                {/* Ligne animée (flux de données) */}
-                <motion.line 
+                {/* Ligne animée (flux de données) via CSS pour éviter l'erreur Web Animations API */}
+                <line 
                   x1="50%" y1="50%" 
                   x2={node.x} y2={node.y} 
                   stroke="#00E5FF" 
                   strokeWidth="2"
                   strokeDasharray="10 20"
-                  animate={{
-                    strokeDashoffset: [0, -60]
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear",
-                    delay: node.delay // Décalage pour que les flux ne soient pas tous synchronisés
-                  }}
-                  className="opacity-60"
+                  strokeDashoffset="0"
+                  opacity="0.6"
+                  className={`flow-line-${node.id}`}
                 />
               </g>
             ))}

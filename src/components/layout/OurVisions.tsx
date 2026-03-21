@@ -156,9 +156,11 @@ function CheckpointDesktop({
   point: (typeof checkpoints)[0];
   progress: MotionValue<number>;
 }) {
-  // Create transforms for styles
-  const opacity = useTransform(progress, [point.threshold - 0.1, point.threshold], [0.5, 1]);
-  const scale = useTransform(progress, [point.threshold - 0.1, point.threshold], [1, 1.1]);
+  // Clamp lower bound to avoid negative offsets (Web Animations API requires monotonically non-decreasing offsets)
+  const lo = point.threshold <= 0.1 ? 0 : point.threshold - 0.1;
+  const hi = point.threshold <= 0 ? 0.05 : point.threshold;
+  const opacity = useTransform(progress, [lo, hi], [0.5, 1]);
+  const scale = useTransform(progress, [lo, hi], [1, 1.1]);
   const color = useTransform(progress, (latest: number) => latest >= point.threshold ? "#00E5FF" : "#333");
   const glow = useTransform(progress, (latest: number) => latest >= point.threshold ? "0 0 30px #00E5FF, 0 0 60px #00E5FF" : "none");
   const iconColor = useTransform(progress, (latest: number) => latest >= point.threshold ? "#00E5FF" : "#525252");
@@ -213,8 +215,11 @@ function CheckpointMobile({
     const color = useTransform(progress, (latest: number) => latest >= point.threshold ? "#00E5FF" : "#333");
     const glow = useTransform(progress, (latest: number) => latest >= point.threshold ? "0 0 30px #00E5FF, 0 0 60px #00E5FF" : "none");
     const iconColor = useTransform(progress, (latest: number) => latest >= point.threshold ? "#00E5FF" : "#525252");
-    const opacity = useTransform(progress, [point.threshold - 0.1, point.threshold], [0.3, 1]);
-    const x = useTransform(progress, [point.threshold - 0.1, point.threshold], [-20, 0]);
+    // Clamp lower bound to avoid negative offsets (Web Animations API requires monotonically non-decreasing offsets)
+    const lo = point.threshold <= 0.1 ? 0 : point.threshold - 0.1;
+    const hi = point.threshold <= 0 ? 0.05 : point.threshold;
+    const opacity = useTransform(progress, [lo, hi], [0.3, 1]);
+    const x = useTransform(progress, [lo, hi], [-20, 0]);
 
     return (
       <motion.div 
