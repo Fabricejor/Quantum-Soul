@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 // --- Helper Components & Data ---
 
@@ -52,7 +53,7 @@ type Testimonial = {
 
 // --- Main Animated Testimonials Component ---
 // This is the core component that handles the animation and logic.
-const AnimatedTestimonials = ({
+export const AnimatedTestimonials = ({
   testimonials,
   autoplay = true,
 }: {
@@ -103,14 +104,14 @@ const AnimatedTestimonials = ({
                     className="absolute inset-0 origin-bottom"
                     style={{ perspective: '1000px' }}
                   >
-                    <img
-                      src={testimonial.src}
-                      alt={testimonial.name}
-                      width={500}
-                      height={500}
-                      draggable={false}
-                      className="h-full w-full rounded-3xl object-cover shadow-2xl"
-                    />
+          <Image
+            src={testimonial.src}
+            alt={testimonial.name}
+            width={500}
+            height={500}
+            draggable={false}
+            className="h-full w-full rounded-3xl object-cover shadow-2xl"
+          />
                   </motion.div>
                 ))}
               </AnimatePresence>

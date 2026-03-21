@@ -71,7 +71,7 @@ export default function FAQWithSpiral({
     opacityMax: 0.9,
     sizeMin: 0.5,
     sizeMax: 1.4,
-    // background: "#000000",
+    background: "#000000",
   });
 
   // Gradient presets
@@ -295,7 +295,7 @@ export default function FAQWithSpiral({
 
         {/* Footer */}
         <footer className="mt-16 border-t border-white/10 pt-6 text-xs text-white/50 text-center md:text-left">
-          © {new Date().getFullYear()} Quantum Soul — L'âme digitale de votre entreprise.
+          © {new Date().getFullYear()} Quantum Soul — L&apos;âme digitale de votre entreprise.
         </footer>
       </div>
 
@@ -327,7 +327,7 @@ export default function FAQWithSpiral({
                 { label: "Pastel", value: "pastel" },
                 { label: "Grayscale", value: "grayscale" },
               ]}
-              onChange={(v)=> setCfg({...cfg, gradient: v as any})}
+              onChange={(v)=> setCfg({...cfg, gradient: v as "none" | "rainbow" | "sunset" | "ocean" | "fire" | "neon" | "pastel" | "grayscale"})}
             />
 
             <div className="flex gap-2">

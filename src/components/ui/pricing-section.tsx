@@ -69,7 +69,6 @@ interface PricingCardProps {
   buttonText: string;
   imageSrc?: string;
   imageAlt?: string;
-  isUnique?: boolean; // A prop to handle the unique request card style
   className?: string;
   useSparkles?: boolean;
 }
@@ -106,7 +105,6 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
       buttonText,
       imageSrc,
       imageAlt,
-      isUnique = false,
       useSparkles = false,
       ...props
     },

@@ -37,6 +37,7 @@ export const LimelightNav = () => {
     if (currentIndex !== -1) {
       setActiveIndex(currentIndex);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   useEffect(() => {

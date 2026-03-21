@@ -73,7 +73,7 @@ export default function CircuitServices() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed"
           >
-            Ne laissez plus vos données en silo. Quantum Soul crée un écosystème digital fluide où vos applications communiquent intelligemment entre elles, propulsées par l'Intelligence Artificielle.
+            Ne laissez plus vos données en silo. Quantum Soul crée un écosystème digital fluide où vos applications communiquent intelligemment entre elles, propulsées par l&apos;Intelligence Artificielle.
           </motion.p>
         </div>
 
