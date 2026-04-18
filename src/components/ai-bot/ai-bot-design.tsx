@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Send, X } from "lucide-react";
+import { Send, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -46,7 +46,13 @@ export default function AiBotDesign() {
 
     // Simulation de la réponse de l'IA
     setTimeout(() => {
-      setMessages((prev) => [...prev, { role: "ai", content: "Voici une réponse simulée pour le design." }]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "ai",
+          content: "L'intelligence artificielle n'est plus de la science-fiction ; c'est une technologie fondamentale dans notre monde moderne. Nous allons au-delà de la simple automatisation vers des systèmes sophistiqués.",
+        },
+      ]);
       setIsProcessing(false);
     }, 3000);
   };
@@ -63,63 +69,96 @@ export default function AiBotDesign() {
     <>
       {/* 
         Conteneur principal : 
-        - Sur desktop : positionné en bas à droite.
-        - Sur mobile : 
-            - S'il est fermé, on le cache (le trigger est dans le dock).
-            - S'il est ouvert, il prend tout l'écran (inset-0).
+        - Sur mobile : Plein écran avec un fond très sombre et des lueurs colorées.
+        - Sur desktop : Flottant en bas à droite.
       */}
       <div
         className={`fixed z-[100] flex flex-col ${
           isOpen
-            ? "inset-0 bg-black/80 backdrop-blur-xl md:inset-auto md:bottom-8 md:right-8 md:bg-transparent md:backdrop-blur-none md:items-end"
+            ? "inset-0 bg-[#05050A] md:bg-transparent md:inset-auto md:bottom-8 md:right-8 md:items-end"
             : "bottom-8 right-8 items-end hidden md:flex"
         }`}
       >
-        {/* Zone de messages (s'affiche uniquement si ouvert et s'il y a des messages, ou toujours sur mobile si ouvert pour prendre l'espace) */}
+        {/* Background Glows (seulement sur mobile quand ouvert) */}
+        {isOpen && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none md:hidden">
+            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/20 blur-[120px] rounded-full" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-600/20 blur-[120px] rounded-full" />
+          </div>
+        )}
+
+        {/* Zone de messages */}
         <AnimatePresence>
           {isOpen && (messages.length > 0 || window.innerWidth < 768) && (
             <motion.div
               initial={{ opacity: 0, y: 20, height: 0 }}
               animate={{ opacity: 1, y: 0, height: "auto" }}
               exit={{ opacity: 0, y: 20, height: 0 }}
-              className="flex-1 w-full overflow-hidden flex flex-col md:mb-4 md:w-[24rem] md:max-h-[60vh] md:rounded-2xl md:bg-black/60 md:p-4 md:shadow-[0_0_30px_rgba(0,229,255,0.15)] md:backdrop-blur-xl md:border md:border-white/10"
+              className="flex-1 w-full flex flex-col relative z-10 md:mb-4 md:w-[26rem] md:max-h-[65vh] md:rounded-[2rem] md:bg-white/[0.02] md:p-0 md:shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:backdrop-blur-3xl md:border md:border-white/10 overflow-hidden"
             >
-              {/* Header Mobile (visible uniquement sur mobile quand ouvert) */}
-              <div className="flex items-center justify-between p-4 border-b border-white/10 md:hidden">
-                <div className="flex items-center gap-3">
-                  <div className="relative w-8 h-8 rounded-full overflow-hidden border border-cyan-500/30">
-                    <Image src="/images/IA Animation/Qs AI Default.png" alt="AI" fill className="object-cover" />
-                  </div>
-                  <span className="text-white font-medium font-geonova tracking-wide">Quantum Soul AI</span>
+              {/* Header Mobile */}
+              <div className="flex items-center justify-between p-6 md:hidden">
+                <button className="text-white/50 hover:text-white">
+                  {/* Icône menu hamburger ou retour (optionnel) */}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+                <div className="flex items-center justify-center px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 backdrop-blur-md">
+                  <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 flex items-center gap-2">
+                    Quantum Soul AI <Sparkles size={14} className="text-purple-400" />
+                  </span>
                 </div>
-                <button onClick={handleClose} className="p-2 text-white/70 hover:text-white bg-white/5 rounded-full">
-                  <X size={20} />
+                <button onClick={handleClose} className="p-2 text-white/50 hover:text-white">
+                  <X size={24} />
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto p-4 md:p-0 custom-scrollbar flex flex-col gap-4">
+              {/* Conteneur des messages avec scroll */}
+              <div className="flex-1 overflow-y-auto px-6 py-4 custom-scrollbar flex flex-col gap-8 md:p-6">
                 {messages.length === 0 && (
-                  <div className="flex-1 flex flex-col items-center justify-center text-center opacity-50 md:hidden">
-                    <Image src="/images/IA Animation/Qs AI Default.png" alt="AI" width={80} height={80} className="mb-4 opacity-50" />
-                    <p className="text-white text-sm">Comment puis-je vous aider aujourd'hui ?</p>
+                  <div className="flex-1 flex flex-col items-center justify-center text-center md:hidden">
+                    <div className="relative w-32 h-32 mb-8">
+                      <div className="absolute inset-0 bg-blue-500/30 blur-2xl rounded-full" />
+                      <Image src="/images/IA Animation/Qs AI Default.png" alt="AI" fill className="object-contain relative z-10 opacity-80" />
+                    </div>
+                    <h2 className="text-2xl font-semibold text-white mb-2 font-geonova">Ask anything</h2>
+                    <p className="text-white/40 text-sm max-w-[80%]">Je suis là pour répondre à vos questions et vous accompagner.</p>
                   </div>
                 )}
+                
                 {messages.map((msg, idx) => (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, x: msg.role === "user" ? 20 : -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}
                   >
+                    {msg.role === "ai" && (
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="relative w-6 h-6 rounded-full overflow-hidden flex-shrink-0 bg-black/50 border border-white/10">
+                          <Image src="/images/IA Animation/Qs AI Default.png" alt="AI" fill className="object-cover" />
+                        </div>
+                        <span className="text-xs font-medium text-white/50">Quantum Soul AI</span>
+                      </div>
+                    )}
+                    
                     <div
-                      className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm shadow-lg ${
+                      className={`text-[15px] leading-relaxed ${
                         msg.role === "user"
-                          ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-br-none border border-cyan-400/20"
-                          : "bg-white/10 text-gray-100 rounded-bl-none border border-white/10 backdrop-blur-md"
+                          ? "bg-white/10 backdrop-blur-xl border border-white/10 text-white px-5 py-3 rounded-3xl rounded-tr-sm shadow-[0_4px_24px_rgba(0,0,0,0.2)] max-w-[85%]"
+                          : "text-white/90 max-w-[95%] pl-9" // Le texte de l'IA n'a pas de bulle, juste du texte propre
                       }`}
                     >
                       {msg.content}
                     </div>
+
+                    {/* Actions sous le message IA (Like, Copy, etc.) */}
+                    {msg.role === "ai" && (
+                      <div className="flex items-center gap-4 mt-4 pl-9 text-white/30">
+                        <button className="hover:text-white/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></button>
+                        <button className="hover:text-white/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"/></svg></button>
+                        <button className="hover:text-white/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                      </div>
+                    )}
                   </motion.div>
                 ))}
               </div>
@@ -127,51 +166,46 @@ export default function AiBotDesign() {
           )}
         </AnimatePresence>
 
-        {/* Barre d'input */}
-        <div className={`p-4 md:p-0 w-full md:w-auto ${isOpen ? "bg-black/40 md:bg-transparent border-t border-white/10 md:border-none" : ""}`}>
+        {/* Barre d'input - Style Liquid Glass */}
+        <div className={`w-full relative z-20 ${isOpen ? "p-6 md:p-0 md:mt-4" : ""}`}>
           <motion.div
             layout
             initial={{ borderRadius: 9999 }}
             animate={{
-              width: isOpen ? "100%" : "3.5rem",
-              maxWidth: isOpen ? "100%" : "3.5rem",
+              width: isOpen ? "100%" : "4rem",
+              maxWidth: isOpen ? "100%" : "4rem",
               borderRadius: isOpen ? 9999 : 9999,
             }}
             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-            className={`relative flex h-14 items-center overflow-hidden border shadow-[0_0_20px_rgba(0,0,0,0.5)] backdrop-blur-xl ${
+            className={`relative flex items-center overflow-hidden mx-auto ${
               isOpen
-                ? "w-full md:w-[24rem] bg-black/60 border-white/10"
-                : "w-14 cursor-pointer bg-black/80 border-cyan-500/30 hover:border-cyan-400/60 hover:shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all"
+                ? "h-16 md:w-[26rem]"
+                : "h-16 cursor-pointer"
             }`}
             onClick={handleOpen}
           >
-            <div className="flex h-full w-full items-center px-2">
-              {/* Bouton Logo */}
+            {/* Background Glass Effect (Dark Liquid Glass) */}
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-2xl border border-white/10 rounded-full shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_8px_32px_rgba(0,0,0,0.5)]" />
+
+            <div className="relative flex h-full w-full items-center px-2 z-10">
+              {/* Bouton Logo / Orb */}
               <motion.button
                 layout
-                className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full overflow-hidden"
+                className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full overflow-hidden"
                 animate={{
                   rotate: isProcessing ? [0, 360] : isTyping ? [0, 360] : isOpen ? 360 : 0,
                   scale: isProcessing ? [1, 1.1, 1] : 1,
                 }}
                 transition={{
-                  rotate: {
-                    duration: isProcessing || isTyping ? 2 : 0.5,
-                    repeat: isProcessing || isTyping ? Infinity : 0,
-                    ease: "linear",
-                  },
-                  scale: {
-                    duration: 1.5,
-                    repeat: isProcessing ? Infinity : 0,
-                    ease: "easeInOut",
-                  },
+                  rotate: { duration: isProcessing || isTyping ? 2 : 0.5, repeat: isProcessing || isTyping ? Infinity : 0, ease: "linear" },
+                  scale: { duration: 1.5, repeat: isProcessing ? Infinity : 0, ease: "easeInOut" },
                 }}
                 onClick={(e) => {
-                  if (isOpen && window.innerWidth >= 768) {
-                    handleClose(e);
-                  }
+                  if (isOpen && window.innerWidth >= 768) handleClose(e);
                 }}
               >
+                {/* Glow derrière le logo */}
+                <div className="absolute inset-0 bg-blue-500/40 blur-md rounded-full" />
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentLogo}
@@ -179,9 +213,9 @@ export default function AiBotDesign() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute inset-0"
+                    className="absolute inset-0 flex items-center justify-center"
                   >
-                    <Image src={currentLogo} alt="AI Bot Logo" fill className="object-cover scale-110" />
+                    <Image src={currentLogo} alt="AI Bot Logo" width={32} height={32} className="object-contain relative z-10" />
                   </motion.div>
                 </AnimatePresence>
               </motion.button>
@@ -190,39 +224,45 @@ export default function AiBotDesign() {
               <AnimatePresence>
                 {isOpen && (
                   <motion.form
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
+                    exit={{ opacity: 0, x: 10 }}
                     transition={{ duration: 0.3, delay: 0.1 }}
                     onSubmit={handleSend}
-                    className="flex h-full w-full items-center gap-2 pl-3 pr-1"
+                    className="flex h-full w-full items-center gap-2 pl-3 pr-2"
                   >
-                    <input
-                      ref={inputRef}
-                      type="text"
-                      value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
-                      disabled={isProcessing}
-                      placeholder={isProcessing ? "Je traite votre réponse..." : "Posez votre question..."}
-                      className="h-full w-full bg-transparent text-sm text-white placeholder-gray-400 focus:outline-none disabled:opacity-50"
-                    />
+                    <div className="relative w-full h-full flex items-center">
+                      {!inputValue && !isProcessing && (
+                        <span className="absolute left-0 text-white/40 pointer-events-none text-[15px] font-light">
+                          Ask anything<span className="animate-pulse">|</span>
+                        </span>
+                      )}
+                      <input
+                        ref={inputRef}
+                        type="text"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        disabled={isProcessing}
+                        className="h-full w-full bg-transparent text-[15px] text-white focus:outline-none disabled:opacity-50 relative z-10"
+                      />
+                    </div>
                     
                     {/* Bouton Fermer (Croix) */}
                     <button
                       type="button"
                       onClick={handleClose}
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors hidden md:flex"
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-colors hidden md:flex"
                     >
                       <X size={18} />
                     </button>
 
-                    {/* Bouton Envoyer */}
+                    {/* Bouton Envoyer (Glass style) */}
                     <button
                       type="submit"
                       disabled={!inputValue.trim() || isProcessing}
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white transition-all hover:shadow-[0_0_15px_rgba(0,229,255,0.4)] disabled:from-gray-700 disabled:to-gray-800 disabled:text-gray-500 disabled:shadow-none"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-white/5"
                     >
-                      <Send size={16} className={inputValue.trim() && !isProcessing ? "ml-0.5" : ""} />
+                      <Send size={16} className={inputValue.trim() && !isProcessing ? "ml-0.5 text-blue-400" : "text-white/50"} />
                     </button>
                   </motion.form>
                 )}
