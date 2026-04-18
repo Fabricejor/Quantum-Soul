@@ -83,14 +83,14 @@ export const LimelightNav = () => {
         })}
 
         {/* Logo Central (Hors flux de navigation standard) */}
-        <div className="relative z-30 -mt-8 mx-2">
-            <div className="w-16 h-16 rounded-full bg-black border border-white/10 shadow-[0_0_20px_rgba(0,229,255,0.3)] flex items-center justify-center overflow-hidden relative">
+        <div className="relative z-30 -mt-8 mx-2 cursor-pointer" onClick={() => window.dispatchEvent(new Event('open-ai-bot'))}>
+            <div className="w-16 h-16 rounded-full bg-black/80 backdrop-blur-md border border-white/10 shadow-[0_0_20px_rgba(0,229,255,0.3)] flex items-center justify-center overflow-hidden relative transition-transform hover:scale-105 active:scale-95">
                 <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 to-transparent opacity-50" />
                 <Image
-                    src="/images/logo & icons/Logo Q Blanc Icone.png"
-                    alt="Logo Central"
+                    src="/images/IA Animation/Qs AI Default.png"
+                    alt="AI Bot Trigger"
                     fill
-                    className="object-contain relative z-10 scale-110"
+                    className="object-cover relative z-10 scale-110"
                 />
             </div>
         </div>

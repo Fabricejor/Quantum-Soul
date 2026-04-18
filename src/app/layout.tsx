@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ClientLayout from "@/components/layout/ClientLayout";
+import AiBotDesign from "@/components/ai-bot/ai-bot-design";
 
 const geonova = localFont({
   src: "../../public/fonts/geonova-variable.ttf",
@@ -40,6 +41,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer/>
+          <AiBotDesign />
         </ClientLayout>
       </body>
     </html>
