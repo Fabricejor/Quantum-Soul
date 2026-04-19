@@ -132,7 +132,19 @@ export default function AiBotDesign() {
         </AnimatePresence>
 
         {/* Barre d'input - Style Liquid Glass */}
-        <div className={`w-full relative z-20 ${isOpen ? "p-6 md:p-0 md:mt-4" : ""}`}>
+        <div className={`w-full relative z-20 ${isOpen ? "p-6 md:p-0 md:mt-4" : "group"}`}>
+          {/* Tooltip "Essayer notre chatbot" (Visible uniquement sur Desktop au survol quand fermé) */}
+          {!isOpen && (
+            <div className="absolute bottom-[110%] right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none hidden md:block">
+              <div className="bg-black/40 backdrop-blur-2xl border border-white/10 rounded-full py-2 px-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_8px_32px_rgba(0,0,0,0.5)] flex items-center gap-2">
+                <Sparkles size={14} className="text-cyan-400" />
+                <span className="text-sm font-medium text-white/90 whitespace-nowrap font-geonova">
+                  Essayer notre chatbot
+                </span>
+              </div>
+            </div>
+          )}
+
           <motion.div
             layout
             initial={{ borderRadius: 9999 }}

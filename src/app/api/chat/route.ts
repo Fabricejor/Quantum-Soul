@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
+import { QUANTUM_SOUL_MARKETING_MEMORY } from "@/components/ai-bot/marketing-memory";
 
 // Récupération de la clé API depuis les variables d'environnement
 const apiKey = process.env.API_CHAT_BOT || "";
@@ -25,13 +26,28 @@ export async function POST(req: Request) {
     }
 
     // Initialisation du modèle Gemini (gemini-2.5-flash est très rapide et performant)
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    // On injecte ici notre Prompt Système (Marketing Memory) pour définir son comportement
+    const model = genAI.getGenerativeModel({ 
+      model: "gemini-2.5-flash",
+      systemInstruction: QUANTUM_SOUL_MARKETING_MEMORY
+    });
 
     // Formatage de l'historique pour Gemini
     const history = messages.slice(0, -1).map((msg: { role: string; content: string }) => ({
       role: msg.role === "ai" ? "model" : "user",
       parts: [{ text: msg.content }],
     }));
+
+    // CORRECTION CRITIQUE : Gemini exige que l'historique commence TOUJOURS par "user"
+    // Comme notre frontend initialise le chat avec un message de bienvenue de l'IA ("model"),
+    // l'historique commence par "model", ce qui fait planter l'API.
+    // Solution : On ajoute un faux message "user" invisible au tout début de l'historique.
+    if (history.length > 0 && history[0].role === "model") {
+      history.unshift({
+        role: "user",
+        parts: [{ text: "Bonjour, je visite le site de Quantum Soul." }]
+      });
+    }
 
     const latestMessage = messages[messages.length - 1].content;
 
@@ -40,7 +56,7 @@ export async function POST(req: Request) {
       history: history,
       generationConfig: {
         maxOutputTokens: 1000,
-        temperature: 0.7,
+        temperature: 0.85, // Augmenté pour plus de créativité et de copywriting (était 0.7)
       },
     });
 
