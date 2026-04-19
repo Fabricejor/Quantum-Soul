@@ -1,61 +1,26 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { Send, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useAiBotLogic } from "./ai-bot-logic";
 
 export default function AiBotDesign() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [messages, setMessages] = useState<{ role: "user" | "ai"; content: string }[]>([]);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const isTyping = inputValue.length > 0;
-
-  // Écouter l'événement personnalisé pour ouvrir le bot depuis la barre de navigation mobile
-  useEffect(() => {
-    const handleOpenEvent = () => {
-      setIsOpen(true);
-      setTimeout(() => inputRef.current?.focus(), 300);
-    };
-    window.addEventListener("open-ai-bot", handleOpenEvent);
-    return () => window.removeEventListener("open-ai-bot", handleOpenEvent);
-  }, []);
-
-  const handleOpen = () => {
-    if (!isOpen) {
-      setIsOpen(true);
-      setTimeout(() => inputRef.current?.focus(), 300);
-    }
-  };
-
-  const handleClose = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setIsOpen(false);
-  };
-
-  const handleSend = (e?: React.FormEvent) => {
-    e?.preventDefault();
-    if (!inputValue.trim() || isProcessing) return;
-
-    setMessages((prev) => [...prev, { role: "user", content: inputValue }]);
-    setInputValue("");
-    setIsProcessing(true);
-
-    // Simulation de la réponse de l'IA
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "ai",
-          content: "L'intelligence artificielle n'est plus de la science-fiction ; c'est une technologie fondamentale dans notre monde moderne. Nous allons au-delà de la simple automatisation vers des systèmes sophistiqués.",
-        },
-      ]);
-      setIsProcessing(false);
-    }, 3000);
-  };
+  // On récupère toute la logique depuis notre hook personnalisé
+  const {
+    isOpen,
+    inputValue,
+    setInputValue,
+    isProcessing,
+    messages,
+    inputRef,
+    messagesEndRef,
+    isTyping,
+    handleOpen,
+    handleClose,
+    handleSend,
+  } = useAiBotLogic();
 
   // Déterminer quelle image afficher
   let currentLogo = "/images/IA Animation/Qs AI Default.png";
@@ -99,7 +64,6 @@ export default function AiBotDesign() {
               {/* Header Mobile */}
               <div className="flex items-center justify-between p-6 md:hidden">
                 <button className="text-white/50 hover:text-white">
-                  {/* Icône menu hamburger ou retour (optionnel) */}
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                 </button>
                 <div className="flex items-center justify-center px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 backdrop-blur-md">
@@ -113,7 +77,7 @@ export default function AiBotDesign() {
               </div>
 
               {/* Conteneur des messages avec scroll */}
-              <div className="flex-1 overflow-y-auto px-6 py-4 custom-scrollbar flex flex-col gap-8 md:p-6">
+              <div className="flex-1 overflow-y-auto overflow-x-hidden px-6 py-4 custom-scrollbar flex flex-col gap-8 md:p-6">
                 {messages.length === 0 && (
                   <div className="flex-1 flex flex-col items-center justify-center text-center md:hidden">
                     <div className="relative w-32 h-32 mb-8">
@@ -142,7 +106,7 @@ export default function AiBotDesign() {
                     )}
                     
                     <div
-                      className={`text-[15px] leading-relaxed ${
+                      className={`text-[15px] leading-relaxed break-words whitespace-pre-wrap ${
                         msg.role === "user"
                           ? "bg-white/10 backdrop-blur-xl border border-white/10 text-white px-5 py-3 rounded-3xl rounded-tr-sm shadow-[0_4px_24px_rgba(0,0,0,0.2)] max-w-[85%]"
                           : "text-white/90 max-w-[95%] pl-9" // Le texte de l'IA n'a pas de bulle, juste du texte propre
@@ -161,6 +125,7 @@ export default function AiBotDesign() {
                     )}
                   </motion.div>
                 ))}
+                <div ref={messagesEndRef} />
               </div>
             </motion.div>
           )}
