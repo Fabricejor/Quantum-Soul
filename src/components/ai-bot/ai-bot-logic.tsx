@@ -61,13 +61,6 @@ export function useAiBotLogic() {
 
       const data = await response.json();
 
-      // DEBUG: Afficher la liste des modèles dans la console du navigateur
-      if (data.debugModels) {
-        console.log("--- DEBUG: MODÈLES GEMINI DISPONIBLES ---");
-        console.log(data.debugModels);
-        console.log("-------------------------------------------");
-      }
-
       if (!response.ok) {
         console.error("Erreur API retournée:", data);
         throw new Error(data.details || data.error || "Erreur lors de la communication avec l'API");
@@ -80,13 +73,14 @@ export function useAiBotLogic() {
           content: data.reply || "Désolé, je n'ai pas pu générer de réponse.",
         },
       ]);
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Une erreur est survenue. Veuillez vérifier la console.";
       console.error("Erreur lors de l'envoi:", error);
       setMessages((prev) => [
         ...prev,
         {
           role: "ai",
-          content: `Erreur: ${error.message || "Une erreur est survenue. Veuillez vérifier la console."}`,
+          content: `Erreur: ${errorMessage}`,
         },
       ]);
     } finally {
