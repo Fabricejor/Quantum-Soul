@@ -1,5 +1,6 @@
 import React from "react";
 import { Scene } from "@/components/ui/background/hero-section";
+import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
 
 export default function RealisationHero() {
   return (
@@ -26,37 +27,24 @@ export default function RealisationHero() {
           
           {/* Call to Action Button - Liquid Glass Style */}
           <div className="flex justify-center pt-4">
-            <button 
-              className="relative group px-8 py-3.5 rounded-full text-white font-semibold tracking-wide transition-all duration-300 transform hover:scale-105 active:scale-95 text-xs md:text-base"
-              style={{
-                background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0.05) 100%)',
-                backdropFilter: 'blur(10px) saturate(180%)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                boxShadow: `
-                  0 8px 32px 0 rgba(31, 38, 135, 0.2),
-                  inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-                  inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
-                  inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)
-                `
-              }}
+            <GlassButton 
+              className="text-white text-xs md:text-base font-semibold group"
             >
-              <span className="relative z-10 flex items-center gap-2 drop-shadow-md">
-                Voir plus
-                <svg 
-                  className="w-3 h-3 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M9 5l7 7-7 7" 
-                  />
-                </svg>
-              </span>
-            </button>
+              Voir plus
+              <svg 
+                className="w-3 h-3 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M9 5l7 7-7 7" 
+                />
+              </svg>
+            </GlassButton>
           </div>
         </div>
       </div>

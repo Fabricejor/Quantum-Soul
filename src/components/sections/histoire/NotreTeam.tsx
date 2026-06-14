@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Linkedin, Globe } from "lucide-react";
 import Image from "next/image";
+import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
 
 type TeamMember = {
     name: string;
@@ -85,8 +86,12 @@ export default function NotreTeam() {
     };
 
     return (
-        <section className="relative w-full py-20 px-4 md:px-8 overflow-hidden ">
-            <div className="max-w-7xl mx-auto">
+        <section className="relative w-full py-20 px-4 md:px-8 overflow-hidden">
+            {/* Decorative background glows */}
+            <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto relative z-10">
                 <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white font-geonova">
                     Notre Équipe
                 </h2>
@@ -94,7 +99,9 @@ export default function NotreTeam() {
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
                     {/* Image Section */}
                     <div className="relative h-96 w-full flex items-center justify-center">
-                        <div className="relative h-full w-full max-w-[350px]">
+                        {/* Glow behind cards */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-cyan-500/10 rounded-full blur-[60px] pointer-events-none" />
+                        <div className="relative h-full w-full max-w-[300px]">
                             <AnimatePresence>
                                 {teamMembers.map((member, index) => (
                                     <motion.div
@@ -125,16 +132,28 @@ export default function NotreTeam() {
                                             duration: 0.4,
                                             ease: "easeInOut",
                                         }}
-                                        className="absolute inset-0 origin-bottom"
+                                        className="absolute inset-0 origin-bottom flex items-center justify-center"
                                     >
-                                        <div className="relative h-full w-full rounded-3xl overflow-hidden shadow-2xl ">
-                                            <Image
-                                                src={member.src}
-                                                alt={member.name}
-                                                fill
-                                                draggable={false}
-                                                className="object-cover object-center"
-                                            />
+                                        <div className="relative w-[260px] h-[340px] rounded-[2rem] p-3 bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl flex flex-col justify-between group hover:border-white/20 transition-all duration-300">
+                                            {/* Glow inside card */}
+                                            <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-[2rem] pointer-events-none" />
+                                            
+                                            {/* Image frame */}
+                                            <div className="relative flex-1 w-full rounded-2xl overflow-hidden shadow-inner">
+                                                <Image
+                                                    src={member.src}
+                                                    alt={member.name}
+                                                    fill
+                                                    draggable={false}
+                                                    className="object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-500"
+                                                />
+                                            </div>
+                                            
+                                            {/* Polaroid/Card Footer */}
+                                            <div className="mt-3 flex items-center justify-between px-2">
+                                                <span className="text-[10px] uppercase tracking-widest text-white/40 font-medium font-sans">QS Team</span>
+                                                <span className="text-[10px] text-cyan-400 font-mono">0{index + 1}</span>
+                                            </div>
                                         </div>
                                     </motion.div>
                                 ))}
@@ -153,18 +172,22 @@ export default function NotreTeam() {
                                 transition={{ duration: 0.3, ease: "easeInOut" }}
                                 className="space-y-6"
                             >
-                                <div>
-                                    <h3 className="text-3xl font-bold text-white mb-2 font-geonova">
+                                <div className="space-y-2">
+                                    <h3 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-cyan-400 font-geonova tracking-tight">
                                         {teamMembers[active].name}
                                     </h3>
-                                    <p className="text-lg text-neutral-400 font-medium">
+                                    <p className="text-sm md:text-base text-cyan-400 font-semibold tracking-wide flex items-center gap-2">
+                                        <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
                                         {teamMembers[active].designation}
                                     </p>
                                 </div>
 
-                                <p className="text-lg text-neutral-300 leading-relaxed italic">
-                                    &ldquo;{teamMembers[active].quote}&rdquo;
-                                </p>
+                                <div className="relative">
+                                    <span className="absolute -top-8 -left-4 text-7xl text-white/5 font-serif pointer-events-none select-none">“</span>
+                                    <p className="text-lg md:text-xl text-neutral-300 leading-relaxed font-light italic relative z-10">
+                                        &ldquo;{teamMembers[active].quote}&rdquo;
+                                    </p>
+                                </div>
 
                                 <div className="flex flex-wrap gap-4 pt-4">
                                     {teamMembers[active].portfolio && (
@@ -172,10 +195,11 @@ export default function NotreTeam() {
                                             href={teamMembers[active].portfolio}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold hover:opacity-90 transition-opacity"
                                         >
-                                            <Globe className="w-4 h-4" />
-                                            Portfolio
+                                            <GlassButton className="text-white text-sm font-semibold group flex items-center gap-2">
+                                                <Globe className="w-4 h-4 text-white/70 group-hover:rotate-12 transition-transform" />
+                                                Portfolio
+                                            </GlassButton>
                                         </a>
                                     )}
                                     {teamMembers[active].linkedin && (
@@ -183,10 +207,11 @@ export default function NotreTeam() {
                                             href={teamMembers[active].linkedin}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-neutral-700 text-white font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
                                         >
-                                            <Linkedin className="w-4 h-4" />
-                                            LinkedIn
+                                            <GlassButton className="text-white text-sm font-semibold group flex items-center gap-2">
+                                                <Linkedin className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
+                                                LinkedIn
+                                            </GlassButton>
                                         </a>
                                     )}
                                 </div>
@@ -195,20 +220,22 @@ export default function NotreTeam() {
 
                         {/* Navigation Controls */}
                         <div className="flex gap-4 pt-12">
-                            <button
+                            <GlassButton
                                 onClick={handlePrev}
-                                className="group flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+                                size="icon"
                                 aria-label="Previous member"
+                                className="text-white group rounded-full"
                             >
-                                <ArrowLeft className="h-6 w-6 text-black dark:text-white transition-transform group-hover:-translate-x-1" />
-                            </button>
-                            <button
+                                <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
+                            </GlassButton>
+                            <GlassButton
                                 onClick={handleNext}
-                                className="group flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+                                size="icon"
                                 aria-label="Next member"
+                                className="text-white group rounded-full"
                             >
-                                <ArrowRight className="h-6 w-6 text-black dark:text-white transition-transform group-hover:translate-x-1" />
-                            </button>
+                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            </GlassButton>
                         </div>
                     </div>
                 </div>

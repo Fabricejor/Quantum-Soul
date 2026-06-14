@@ -39,21 +39,21 @@ const buttonVariants = cva(
   }
 );
 
+import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
+
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-}
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+  ({ className, children, ...props }, ref) => {
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+      <GlassButton
         ref={ref}
+        className={className}
         {...props}
-      />
+      >
+        {children}
+      </GlassButton>
     );
   }
 );

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { LimelightNav } from "@/components/ui/docks/limelight-nav";
+import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
 
 export default function Navbar() {
     const { scrollY } = useScroll();
@@ -31,8 +32,31 @@ export default function Navbar() {
 
     return (
         <>
+            <style>{`
+                .navbar-liquid-active {
+                    backdrop-filter: blur(20px) saturate(180%) !important;
+                    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+                    background-color: rgba(13, 13, 13, 0.15) !important;
+                    box-shadow: 
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+                        inset 1.8px 3px 0px -2px rgba(255, 255, 255, 0.7), 
+                        inset -2px -2px 0px -2px rgba(255, 255, 255, 0.6), 
+                        inset -3px -8px 1px -6px rgba(255, 255, 255, 0.4), 
+                        inset -0.3px -1px 4px 0px rgba(0, 0, 0, 0.2), 
+                        inset -1.5px 2.5px 0px -2px rgba(0, 0, 0, 0.4), 
+                        inset 0px 3px 4px -2px rgba(0, 0, 0, 0.4), 
+                        inset 2px -6.5px 1px -4px rgba(0, 0, 0, 0.2), 
+                        0px 2px 10px 0px rgba(0, 0, 0, 0.3), 
+                        0px 10px 30px 0px rgba(0, 0, 0, 0.25) !important;
+                    transition: backdrop-filter 300ms ease, background-color 300ms ease, box-shadow 300ms ease;
+                }
+                .navbar-liquid-inactive {
+                    transition: backdrop-filter 300ms ease, background-color 300ms ease, box-shadow 300ms ease;
+                }
+            `}</style>
+
             {/* Desktop Navbar */}
-            <div className="hidden md:flex fixed top-0 left-0 right-0 z-50 justify-center pt-6 pointer-events-none">
+            <div className="hidden md:flex fixed top-0 left-0 right-0 z-[5000] justify-center pt-6 pointer-events-none">
                 {/* Le conteneur nav a pointer-events-auto pour réactiver les clics */}
                 <motion.nav
                     initial={{
@@ -58,7 +82,9 @@ export default function Navbar() {
                         ease: "easeInOut",
                     }}
                     aria-label="Navigation principale"
-                    className="pointer-events-auto flex items-center justify-between px-4 md:px-8 text-foreground overflow-hidden"
+                    className={`pointer-events-auto flex items-center justify-between px-4 md:px-8 text-foreground overflow-hidden ${
+                        isScrolled ? "navbar-liquid-active" : "navbar-liquid-inactive"
+                    }`}
                 >
                     {/* LOGO (Gauche) */}
                     <motion.div
@@ -109,14 +135,12 @@ export default function Navbar() {
                         }}
                     >
                         <Link href="/get-started">
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                            <GlassButton
                                 aria-label="Rejoignez-nous"
-                                className="bg-white text-black px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-cyan-400 hover:text-white transition-colors duration-300 shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_20px_var(--color-cyan-400)]"
+                                className="text-white text-sm font-semibold"
                             >
                                 Rejoignez-nous
-                            </motion.button>
+                            </GlassButton>
                         </Link>
                     </motion.div>
                 </motion.nav>

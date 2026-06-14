@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
 
 export interface FAQItemData {
   q: string;
@@ -285,10 +286,10 @@ export default function FAQWithSpiral({
               </h2>
             )}
             {ctaButtonText && (
-              <button className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm md:text-base font-semibold transition-all duration-300 bg-white text-black hover:bg-cyan-400 hover:text-white hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] h-12 md:h-14 px-8 group">
+              <GlassButton className="text-white text-sm md:text-base font-semibold group">
                 {ctaButtonText}
                 <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </GlassButton>
             )}
           </div>
         )}
