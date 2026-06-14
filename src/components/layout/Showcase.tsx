@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { GlowingEffect } from "@/components/ui/effects/glowing-effect";
 import { HoverBorderGradient } from "@/components/ui/effects/hover-border-gradient";
 import { Cloud, GitBranch, Cpu, MessageSquare } from "lucide-react";
@@ -28,8 +29,31 @@ export default function Showcase() {
     },
   ];
 
+  const videoRef = React.useRef<HTMLDivElement | null>(null);
+  const [isVideoVisible, setIsVideoVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!videoRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVideoVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(videoRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-12 md:py-24 relative overflow-hidden min-h-screen flex flex-col items-center justify-center">
+    <section aria-label="Showcase technologique" className="py-12 md:py-24 relative overflow-hidden min-h-screen flex flex-col items-center justify-center">
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-10 md:mb-20 space-y-4">
@@ -40,16 +64,21 @@ export default function Showcase() {
               as="div"
               highlightColor="#00E5FF"
             >
-              <div className="w-16 h-16 md:w-20 md:h-20 relative rounded-2xl overflow-hidden shadow-lg">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/video/abstract video qs -home section 3-4.mp4" type="video/mp4" />
-                </video>
+              <div
+                ref={videoRef}
+                className="w-16 h-16 md:w-20 md:h-20 relative rounded-2xl overflow-hidden shadow-lg"
+              >
+                {isVideoVisible && (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    <source src="/video/abstract video qs -home section 3-4.mp4" type="video/mp4" />
+                  </video>
+                )}
               </div>
             </HoverBorderGradient>
           </div>
@@ -70,7 +99,9 @@ export default function Showcase() {
         </div>
 
         <div className="flex justify-center">
-          <button className="relative group px-8 py-3.5 rounded-full text-white font-semibold tracking-wide transition-all duration-300 transform hover:scale-105 active:scale-95 text-xs md:text-base"
+          <button
+            aria-label="Découvrir notre stack technologique"
+            className="relative group px-8 py-3.5 rounded-full text-white font-semibold tracking-wide transition-all duration-300 transform hover:scale-105 active:scale-95 text-xs md:text-base"
             style={{
               background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(37, 99, 235, 0.1) 100%)',
               backdropFilter: 'blur(10px) saturate(180%)',
@@ -85,7 +116,7 @@ export default function Showcase() {
           >
             <span className="relative z-10 flex items-center gap-2 drop-shadow-md">
               Découvrir notre stack technologique
-              <svg className="w-3 h-3 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+              <svg aria-hidden="true" className="w-3 h-3 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </span>
           </button>
         </div>

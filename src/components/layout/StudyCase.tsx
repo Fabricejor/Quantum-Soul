@@ -48,7 +48,7 @@ export default function StudyCase() {
     ];
 
   return (
-        <section className="relative min-h-screen py-12 md:py-24 overflow-hidden flex flex-col justify-center">
+        <section aria-label="Études de cas et portfolio" className="relative min-h-screen py-12 md:py-24 overflow-hidden flex flex-col justify-center">
             
             <div className="container mx-auto px-4 relative z-10">
                 <div className="mb-10 md:mb-16">
@@ -110,6 +110,9 @@ export default function StudyCase() {
                                             src={project.img || ""}
                                             alt={project.title}
                                             fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+                                            loading="lazy"
+                                            quality={75}
                                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />

@@ -1,10 +1,17 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import HeroService from '@/components/sections/services/HeroService';
 import GallerieService from '@/components/sections/services/GallerieService';
 import { SparklesCore } from "@/components/ui/effects/sparkles";
 import CircuitServices from '@/components/sections/services/CircuitServices';
 import PriceServices from '@/components/sections/services/PriceServices';
 import FaQService from '@/components/sections/services/FaQService';
+
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Découvrez nos services : automatisation des tâches, agents conversationnels IA, analyse prédictive, intégration API. Des solutions sur mesure propulsées par l'intelligence artificielle.",
+};
 
 export default function ServicesPage() {
   return (

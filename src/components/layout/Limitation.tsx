@@ -46,6 +46,7 @@ export default function Limitation() {
                 src={logo.src}
                 alt={logo.alt}
                 fill
+                sizes="80px"
                 className={`object-contain ${logo.className}`}
               />
             </div>

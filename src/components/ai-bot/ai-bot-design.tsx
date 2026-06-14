@@ -7,6 +7,15 @@ import Image from "next/image";
 import { useAiBotLogic } from "./ai-bot-logic";
 
 export default function AiBotDesign() {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // On récupère toute la logique depuis notre hook personnalisé
   const {
     isOpen,
@@ -38,7 +47,7 @@ export default function AiBotDesign() {
         - Sur desktop : Flottant en bas à droite.
       */}
       <div
-        className={`fixed z-[100] flex flex-col ${
+        className={`fixed z-[9999] flex flex-col ${
           isOpen
             ? "inset-0 bg-[#05050A] md:bg-transparent md:inset-auto md:bottom-8 md:right-8 md:items-end"
             : "bottom-8 right-8 items-end hidden md:flex"
@@ -54,12 +63,15 @@ export default function AiBotDesign() {
 
         {/* Zone de messages */}
         <AnimatePresence>
-          {isOpen && (messages.length > 0 || window.innerWidth < 768) && (
+          {isOpen && (messages.length > 0 || isMobile) && (
             <motion.div
               initial={{ opacity: 0, y: 20, height: 0 }}
               animate={{ opacity: 1, y: 0, height: "auto" }}
               exit={{ opacity: 0, y: 20, height: 0 }}
               className="flex-1 w-full flex flex-col relative z-10 md:mb-4 md:w-[26rem] md:max-h-[65vh] md:rounded-[2rem] md:bg-white/[0.02] md:p-0 md:shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:backdrop-blur-3xl md:border md:border-white/10 overflow-hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Chatbot Quantum Soul AI"
             >
               {/* Header Mobile */}
               <div className="flex items-center justify-between p-6 md:hidden">
@@ -71,7 +83,7 @@ export default function AiBotDesign() {
                     Quantum Soul AI <Sparkles size={14} className="text-purple-400" />
                   </span>
                 </div>
-                <button onClick={handleClose} className="p-2 text-white/50 hover:text-white">
+                <button onClick={handleClose} className="p-2 text-white/50 hover:text-white" aria-label="Fermer le chatbot">
                   <X size={24} />
                 </button>
               </div>
@@ -82,9 +94,9 @@ export default function AiBotDesign() {
                   <div className="flex-1 flex flex-col items-center justify-center text-center md:hidden">
                     <div className="relative w-32 h-32 mb-8">
                       <div className="absolute inset-0 bg-blue-500/30 blur-2xl rounded-full" />
-                      <Image src="/images/IA Animation/Qs AI Default.png" alt="AI" fill className="object-contain relative z-10 opacity-80" />
+                      <Image src="/images/IA Animation/Qs AI Default.png" alt="AI" fill sizes="128px" className="object-contain relative z-10 opacity-80" />
                     </div>
-                    <h2 className="text-2xl font-semibold text-white mb-2 font-geonova">Ask anything</h2>
+                    <h2 className="text-2xl font-semibold text-white mb-2 font-geonova">Posez moi vos questions</h2>
                     <p className="text-white/40 text-sm max-w-[80%]">Je suis là pour répondre à vos questions et vous accompagner.</p>
                   </div>
                 )}
@@ -99,7 +111,7 @@ export default function AiBotDesign() {
                     {msg.role === "ai" && (
                       <div className="flex items-center gap-3 mb-3">
                         <div className="relative w-6 h-6 rounded-full overflow-hidden flex-shrink-0 bg-black/50 border border-white/10">
-                          <Image src="/images/IA Animation/Qs AI Default.png" alt="AI" fill className="object-cover" />
+                          <Image src="/images/IA Animation/Qs AI Default.png" alt="AI" fill sizes="24px" className="object-cover" />
                         </div>
                         <span className="text-xs font-medium text-white/50">Quantum Soul AI</span>
                       </div>
@@ -160,6 +172,7 @@ export default function AiBotDesign() {
                 : "h-16 cursor-pointer"
             }`}
             onClick={handleOpen}
+            aria-label={isOpen ? undefined : "Ouvrir le chatbot"}
           >
             {/* Background Glass Effect (Dark Liquid Glass) */}
             <div className="absolute inset-0 bg-black/40 backdrop-blur-2xl border border-white/10 rounded-full shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_8px_32px_rgba(0,0,0,0.5)]" />
@@ -178,7 +191,7 @@ export default function AiBotDesign() {
                   scale: { duration: 1.5, repeat: isProcessing ? Infinity : 0, ease: "easeInOut" },
                 }}
                 onClick={(e) => {
-                  if (isOpen && window.innerWidth >= 768) handleClose(e);
+                  if (isOpen && !isMobile) handleClose(e);
                 }}
               >
                 {/* Glow derrière le logo */}
@@ -192,7 +205,7 @@ export default function AiBotDesign() {
                     transition={{ duration: 0.2 }}
                     className="absolute inset-0 flex items-center justify-center"
                   >
-                    <Image src={currentLogo} alt="AI Bot Logo" width={32} height={32} className="object-contain relative z-10" />
+                    <Image src={currentLogo} alt="AI Bot Logo" width={32} height={32} sizes="32px" className="object-contain relative z-10" />
                   </motion.div>
                 </AnimatePresence>
               </motion.button>
@@ -211,7 +224,7 @@ export default function AiBotDesign() {
                     <div className="relative w-full h-full flex items-center">
                       {!inputValue && !isProcessing && (
                         <span className="absolute left-0 text-white/40 pointer-events-none text-[15px] font-light">
-                          Ask anything<span className="animate-pulse">|</span>
+                          Posez moi vos questions<span className="animate-pulse">|</span>
                         </span>
                       )}
                       <input
@@ -220,6 +233,7 @@ export default function AiBotDesign() {
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         disabled={isProcessing}
+                        aria-label="Posez vos questions à l'IA"
                         className="h-full w-full bg-transparent text-[15px] text-white focus:outline-none disabled:opacity-50 relative z-10"
                       />
                     </div>
@@ -228,6 +242,7 @@ export default function AiBotDesign() {
                     <button
                       type="button"
                       onClick={handleClose}
+                      aria-label="Fermer le chatbot"
                       className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-colors hidden md:flex"
                     >
                       <X size={18} />
@@ -237,6 +252,7 @@ export default function AiBotDesign() {
                     <button
                       type="submit"
                       disabled={!inputValue.trim() || isProcessing}
+                      aria-label="Envoyer le message"
                       className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-white/5"
                     >
                       <Send size={16} className={inputValue.trim() && !isProcessing ? "ml-0.5 text-blue-400" : "text-white/50"} />

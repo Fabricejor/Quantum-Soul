@@ -101,6 +101,7 @@ export function ImpossibleCubeScene() {
   return (
     <div className="w-full h-full min-h-[400px]">
       <Canvas 
+        dpr={[1, 1.5]}
         gl={{ 
           antialias: true, 
           toneMapping: THREE.ACESFilmicToneMapping,

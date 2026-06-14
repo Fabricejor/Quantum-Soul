@@ -1,71 +1,17 @@
-"use client";
-
 import React from "react";
-import RealisationHero from "@/components/sections/heros/RealisationHero";
-import Filter from "@/components/sections/filtre/filter";
-import Projects from "@/components/sections/projects/Projects";
-import { FilterProvider } from "@/contexts/FilterContext";
-import { Marquee } from "@/components/ui/carousel/marquee";
-import Image from "next/image";
-import Articles from "@/components/sections/article/articles";
-import { SparklesCore } from "@/components/ui/effects/sparkles";
+import type { Metadata } from "next";
+import RealisationContent from "./RealisationContent";
 
-const logos = [
-  {
-    src: "/images/logo & icons/QS ID Noir Background Transparent.png",
-    alt: "QS ID Logo",
-  },
-  {
-    src: "/images/logo & icons/Logo Q Blanc Icone.png",
-    alt: "Q Logo",
-  },
-  {
-    src: "/images/logo & icons/QS ID Noir Background Transparent.png",
-    alt: "QS ID Logo",
-  },
-  {
-    src: "/images/logo & icons/Logo Q Blanc Icone.png",
-    alt: "Q Logo",
-  },
-];
-
-const RealisationPage = () => {
-  return (
-    <FilterProvider>
-      <div>
-        <div className="fixed inset-0 z-[-1] pointer-events-none">
-          <SparklesCore
-            id="tsparticlesrealisation"
-            background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={20}
-            className="w-full h-full"
-            particleColor="#00E5FF"
-            speed={0.5}
-          />
-        </div>
-        <RealisationHero />
-        <Marquee speed={30} className="!mt-0 py-8" pauseOnHover>
-          {logos.map((logo, index) => (
-            <div key={index} className="mx-12 flex items-center justify-center">
-              <div className="relative h-16 w-32 md:h-20 md:w-40 transition-all duration-500 hover:scale-110 opacity-80 hover:opacity-100">
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          ))}
-        </Marquee>
-        <Filter />
-        <Projects />
-        <Articles />
-      </div>
-    </FilterProvider>
-  );
+export const metadata: Metadata = {
+  title: "Réalisations",
+  description:
+    "Découvrez nos projets et réalisations : applications web, mobile, e-commerce, intégration IA. Portfolio de Quantum Soul et études de cas clients.",
 };
 
-export default RealisationPage;
+export default function RealisationPage() {
+  return (
+    <main className="min-h-screen relative">
+      <RealisationContent />
+    </main>
+  );
+}

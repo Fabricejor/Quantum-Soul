@@ -48,9 +48,10 @@ export default function Footer() {
                             <input
                                 type="email"
                                 placeholder="votre@email.com"
+                                aria-label="Adresse email pour la newsletter"
                                 className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
                             />
-                            <button className="absolute right-1 top-1 bottom-1 bg-white text-black hover:bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+                            <button aria-label="S'abonner à la newsletter" className="absolute right-1 top-1 bottom-1 bg-white text-black hover:bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center transition-colors">
                                 <ArrowRight className="w-5 h-5" />
                             </button>
                         </div>
@@ -81,6 +82,8 @@ export default function Footer() {
                                 src="/images/logo & icons/planet.png"
                                 alt="Planet Decoration"
                                 fill
+                                sizes="(max-width: 768px) 192px, 384px"
+                                loading="lazy"
                                 className="object-contain"
                             />
                         </div>
@@ -94,12 +97,14 @@ export default function Footer() {
                                 src="/images/logo & icons/Logo Q Blanc Icone.png"
                                 alt="Quantum Soul Logo"
                                 fill
+                                sizes="(max-width: 768px) 96px, 160px"
+                                loading="lazy"
                                 className="object-contain"
                             />
                         </div>
 
                         {/* Navigation Links */}
-                        <nav className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+                        <nav aria-label="Liens de navigation du pied de page" className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
@@ -119,6 +124,7 @@ export default function Footer() {
                                     <a
                                         key={index}
                                         href={social.href}
+                                        aria-label={`Suivez-nous sur ${social.icon.displayName || 'réseau social'}`}
                                         className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 hover:scale-110 transition-all duration-300"
                                     >
                                         <social.icon className="w-5 h-5" />

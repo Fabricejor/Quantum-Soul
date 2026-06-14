@@ -1,16 +1,19 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/layout/Hero";
-import OurSolutions from "@/components/layout/OurSolutions";
 import Limitation from "@/components/layout/Limitation";
-import OurVisions from "@/components/layout/OurVisions";
-import Showcase from "@/components/layout/Showcase";
-import StudyCase from "@/components/layout/StudyCase";
-import Comparaison from "@/components/layout/Comparaison";
-import TheyTrustUs from "@/components/layout/TheyTrustUs";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
+
+// Lazy-load les sections below-the-fold pour un chargement initial plus rapide
+const OurSolutions = dynamic(() => import("@/components/layout/OurSolutions"));
+const OurVisions = dynamic(() => import("@/components/layout/OurVisions"));
+const Showcase = dynamic(() => import("@/components/layout/Showcase"));
+const StudyCase = dynamic(() => import("@/components/layout/StudyCase"));
+const Comparaison = dynamic(() => import("@/components/layout/Comparaison"));
+const TheyTrustUs = dynamic(() => import("@/components/layout/TheyTrustUs"));
 
 export default function Home() {
   return (
-    <>
+    <main>
       <div className="fixed inset-0 z-[-1] pointer-events-none">
         <SparklesCore
           id="tsparticlesglobal"
@@ -31,6 +34,6 @@ export default function Home() {
       <StudyCase/>
       <Comparaison/>
       <TheyTrustUs/>
-    </>
+    </main>
   );
 }

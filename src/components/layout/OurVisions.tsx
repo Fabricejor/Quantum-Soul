@@ -66,7 +66,7 @@ export default function OurVisions() {
 
   return (
     // Height adjusted for mobile to be less tall if needed, but keeping 300vh for scroll length is fine
-    <div ref={containerRef} className="relative h-[300vh]">
+    <div ref={containerRef} className="relative h-[300vh]" role="region" aria-label="Notre vision — symbiose humain-machine">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
         
         <div className="relative w-full max-w-5xl px-4 flex flex-col items-center gap-10 md:gap-16 z-10">

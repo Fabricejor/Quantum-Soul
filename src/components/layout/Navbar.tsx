@@ -57,6 +57,7 @@ export default function Navbar() {
                         duration: 0.4,
                         ease: "easeInOut",
                     }}
+                    aria-label="Navigation principale"
                     className="pointer-events-auto flex items-center justify-between px-4 md:px-8 text-foreground overflow-hidden"
                 >
                     {/* LOGO (Gauche) */}
@@ -72,6 +73,7 @@ export default function Navbar() {
                                 src="/images/logo & icons/QS ID Noir Background Transparent.png"
                                 alt="Quantum Soul Logo"
                                 fill
+                                sizes="128px"
                                 className="object-contain"
                                 priority
                             />
@@ -86,6 +88,7 @@ export default function Navbar() {
                                 <Link
                                     key={link.name}
                                     href={link.href}
+                                    aria-current={isActive ? "page" : undefined}
                                     className={`text-sm font-medium transition-all duration-300 uppercase tracking-wider font-geonova ${
                                         isActive 
                                             ? "text-cyan-400 -translate-y-1 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" 
@@ -109,6 +112,7 @@ export default function Navbar() {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
+                                aria-label="Rejoignez-nous"
                                 className="bg-white text-black px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-cyan-400 hover:text-white transition-colors duration-300 shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_20px_var(--color-cyan-400)]"
                             >
                                 Rejoignez-nous

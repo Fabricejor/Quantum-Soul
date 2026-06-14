@@ -11,7 +11,7 @@ export default function Loading() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] w-full h-full bg-black flex items-center justify-center overflow-hidden"
+            className="fixed inset-0 z-[10000] w-full h-full bg-black flex items-center justify-center overflow-hidden"
         >
             {/* Rotating Container for Images */}
             <motion.div

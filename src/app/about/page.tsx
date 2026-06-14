@@ -1,9 +1,16 @@
 import React from "react";
+import type { Metadata } from "next";
 import AboutHero from "@/components/sections/heros/aboutHero";
 import Intro from "@/components/sections/histoire/Intro";
 import HistoireTimeline from "@/components/sections/histoire/Timeline";
 import NotreTeam from "@/components/sections/histoire/NotreTeam";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
+
+export const metadata: Metadata = {
+  title: "À propos",
+  description:
+    "Découvrez l'histoire, la vision et l'équipe derrière Quantum Soul. Nous croyons en une symbiose entre l'humain et la machine pour transformer les entreprises.",
+};
 
 export default function page() {
   return (

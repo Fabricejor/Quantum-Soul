@@ -21,7 +21,7 @@ export default function ClientLayout({
       setIsLoading(true);
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 5000); // Minimum 5 seconds on home
+      }, 2500); // Minimum 2.5 seconds on home
 
       return () => clearTimeout(timer);
     } else {

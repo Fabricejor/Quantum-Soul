@@ -71,6 +71,7 @@ const TestimonialCard = ({
                 src={img} 
                 alt={name} 
                 fill 
+                sizes="40px"
                 className="object-cover" 
             />
         </div>
@@ -88,7 +89,7 @@ const TestimonialCard = ({
 
 export default function TheyTrustUs() {
   return (
-    <section className="relative min-h-[70vh] md:min-h-[90vh] py-12 md:py-24 overflow-hidden flex flex-col items-center justify-center">
+    <section aria-label="Témoignages clients" className="relative min-h-[70vh] md:min-h-[90vh] py-12 md:py-24 overflow-hidden flex flex-col items-center justify-center">
       
       <div className="container relative z-10 flex flex-col items-center">
         <div className="text-center mb-8 space-y-4 px-4">
