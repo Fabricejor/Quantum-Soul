@@ -5,8 +5,6 @@ import { GlowingEffect } from "@/components/ui/effects/glowing-effect";
 import { HoverBorderGradient } from "@/components/ui/effects/hover-border-gradient";
 import { Cloud, GitBranch, Cpu, MessageSquare } from "lucide-react";
 
-import { GlassButton } from "@/components/ui/button/apple-tahoe-liquid-glass-button";
-
 export default function Showcase() {
   const technologies = [
     {

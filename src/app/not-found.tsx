@@ -32,7 +32,7 @@ export default function NotFound() {
 
         {/* Message inline on a single line */}
         <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-lg md:text-xl lg:text-2xl text-gray-400 font-light tracking-wide px-4">
-          <span>Il semble que tu t'es perdu...</span>
+          <span>Il semble que tu t&apos;es perdu...</span>
           <span className="inline-flex items-center justify-center h-[1.5em] my-1 mx-1">
             <Image
               src="/images/logo & icons/QS ID Noir Background Transparent.png"
@@ -43,7 +43,7 @@ export default function NotFound() {
               className="object-contain inline-block"
             />
           </span>
-          <span>t'aide à retrouver ton chemin.</span>
+          <span>t&apos;aide à retrouver ton chemin.</span>
         </p>
 
         {/* Home Link Button */}
@@ -53,7 +53,7 @@ export default function NotFound() {
               glassColor="rgba(255, 255, 255, 0.08)"
               className="text-white hover:text-[#00E5FF] transition-all duration-300 font-medium px-8"
             >
-              Retour à l'accueil
+              Retour à l&apos;accueil
             </GlassButton>
           </Link>
         </div>

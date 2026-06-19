@@ -38,7 +38,6 @@ interface PricingCardProps {
   imageSrc?: string;
   imageAlt?: string;
   className?: string;
-  useSparkles?: boolean;
   isPopular?: boolean;
   onButtonClick?: (pack: "Pack 1" | "Pack 2" | "Pack 3") => void;
 }
@@ -75,7 +74,6 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
       buttonText,
       imageSrc,
       imageAlt,
-      useSparkles = false,
       isPopular = false,
       onButtonClick,
       ...props

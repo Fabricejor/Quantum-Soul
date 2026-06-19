@@ -3,7 +3,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { GlassCalendar } from '@/components/ui/calendar/glass-calendar';
-import { X, Mail, ArrowRight, ArrowLeft, Calendar, Clock, Send, CheckCircle, MessageSquare } from 'lucide-react';
+import { X, Mail, ArrowRight, ArrowLeft, Calendar, Clock, Send, CheckCircle } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import FAQWithSpiral from '@/components/ui/faq-section';
@@ -159,7 +159,7 @@ export default function FaQService() {
                         Parlez-nous de votre idée
                       </h3>
                       <p className="text-sm text-white/60 mt-1">
-                        Étape 1 sur 2 — Décrivez votre projet pour débuter l'estimation.
+                        Étape 1 sur 2 — Décrivez votre projet pour débuter l&apos;estimation.
                       </p>
                     </div>
 
