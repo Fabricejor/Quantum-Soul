@@ -51,7 +51,7 @@ export default function HistoireTimeline() {
       content: (
         <div>
           <p className="text-neutral-200 text-xs md:text-sm font-normal mb-8 leading-relaxed text-justify">
-            Création officielle de Quantum Soul. L&apos;entité juridique est née, marquant le début de notre aventure entrepreneuriale. Nous avons structuré notre équipe, défini notre mission et lancé notre identité visuelle pour refléter notre vision futuriste et notre engagement envers l&apos;innovation durable.
+            Création officielle de QuantumSoul. L&apos;entité juridique est née, marquant le début de notre aventure entrepreneuriale. Nous avons structuré notre équipe, défini notre mission et lancé notre identité visuelle pour refléter notre vision futuriste et notre engagement envers l&apos;innovation durable.
           </p>
           <div className="w-full">
             <div className="relative aspect-video rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 shadow-lg">
@@ -110,10 +110,10 @@ export default function HistoireTimeline() {
 
   return (
     <div className="w-full">
-      <Timeline 
-        data={data} 
-        title="L'Évolution de Quantum Soul"
-        description="Visualiser l’évolution de Quantum Soul : dates clés, créations, milestones."
+      <Timeline
+        data={data}
+        title="L'Évolution de QuantumSoul"
+        description="Visualiser l’évolution de QuantumSoul : dates clés, créations, milestones."
       />
     </div>
   );

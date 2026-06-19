@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Quantum Soul — Solutions IA & Automatisation",
-    short_name: "Quantum Soul",
+    name: "QuantumSoul — Solutions IA & Automatisation",
+    short_name: "QuantumSoul",
     description:
       "Fusionnez votre entreprise avec l'intelligence artificielle. Solutions digitales intelligentes pour automatiser, intégrer et amplifier vos performances.",
     start_url: "/",

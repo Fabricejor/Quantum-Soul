@@ -13,7 +13,7 @@ export default function Intro() {
 
         <div className="relative z-10 block">
           {/* Image Container - Utilisation de float-right pour l'effet d'enveloppement demandé */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -22,7 +22,7 @@ export default function Intro() {
           >
             <Image
               src="/images/Mockup web ai .png"
-              alt="Quantum Soul Interface AI"
+              alt="QuantumSoul Interface AI"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
@@ -33,7 +33,7 @@ export default function Intro() {
 
           {/* Bloc Texte */}
           <div className="text-left">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -43,7 +43,7 @@ export default function Intro() {
               Notre Histoire
             </motion.h2>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -51,19 +51,19 @@ export default function Intro() {
               className="prose prose-lg prose-invert max-w-none"
             >
               <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-6 text-justify">
-                <span className="text-blue-400 font-semibold">Quantum Soul</span> est née d’une vision simple : donner aux entreprises une âme digitale capable d’évoluer, d’apprendre et d’automatiser.
+                <span className="text-blue-400 font-semibold">QuantumSoul</span> est née d’une vision simple : donner aux entreprises une âme digitale capable d’évoluer, d’apprendre et d’automatiser.
               </p>
-              
+
               <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-6 text-justify">
                 Au départ, une petite équipe passionnée par l’IA et le développement web s’est regroupée autour d’un objectif : créer des solutions intelligentes accessibles à tous. Nous voulions briser la barrière entre la complexité technologique et l&apos;expérience utilisateur fluide.
               </p>
-              
+
               <p className="text-lg md:text-xl text-white/80 leading-relaxed text-justify">
                 Ce qui était une idée est devenu un mouvement de transformation digitale. Aujourd&apos;hui, nous accompagnons les visionnaires qui souhaitent repousser les limites de ce qui est possible sur le web, en fusionnant esthétique futuriste et puissance algorithmique.
               </p>
             </motion.div>
           </div>
-          
+
           {/* Clearfix pour s'assurer que le conteneur englobe tout */}
           <div className="clear-both" />
         </div>

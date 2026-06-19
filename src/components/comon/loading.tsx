@@ -44,7 +44,7 @@ export default function Loading() {
 
             {/* Texte Central - Statique */}
             <h1 className="z-10 text-4xl md:text-6xl lg:text-7xl font-bold text-white font-geonova tracking-wider uppercase animate-pulse text-center pointer-events-none">
-                Quantum Soul
+                QuantumSoul
             </h1>
         </motion.div>
     );

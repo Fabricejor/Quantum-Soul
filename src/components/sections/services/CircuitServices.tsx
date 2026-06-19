@@ -2,14 +2,14 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  BrainCircuit, 
-  MessageSquare, 
-  Database, 
-  CreditCard, 
-  FileText, 
-  Bot, 
-  Cloud, 
+import {
+  BrainCircuit,
+  MessageSquare,
+  Database,
+  CreditCard,
+  FileText,
+  Bot,
+  Cloud,
   Webhook,
   Blocks,
   Workflow,
@@ -45,7 +45,7 @@ const features = [
   },
   {
     icon: Sparkles,
-    title: "Intégration IA (OpenAI, Gemini)",
+    title: "Intégration IA",
     description: "Intégration native des modèles d'IA les plus avancés directement dans vos processus."
   }
 ];
@@ -53,12 +53,12 @@ const features = [
 export default function CircuitServices() {
   return (
     <section className="relative w-full py-24 overflow-hidden z-10">
-      
+
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-        
+
         {/* EN-TÊTE DE LA SECTION */}
         <div className="text-center mb-16 md:mb-24">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -66,20 +66,20 @@ export default function CircuitServices() {
           >
             Vos outils, connectés comme jamais.
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed"
           >
-            Ne laissez plus vos données en silo. Quantum Soul crée un écosystème digital fluide où vos applications communiquent intelligemment entre elles, propulsées par l&apos;Intelligence Artificielle.
+            Ne laissez plus vos données en silo. QuantumSoul crée un écosystème digital fluide où vos applications communiquent intelligemment entre elles, propulsées par l&apos;Intelligence Artificielle.
           </motion.p>
         </div>
 
         {/* ANIMATION "CARTE 3D / CIRCUIT" */}
         <div className="relative w-full h-[400px] md:h-[500px] mb-24">
-          
+
           {/* Lignes SVG animées (Connexions) - CSS animation pour éviter les conflits Web Animations API */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none">
             <defs>
@@ -98,17 +98,17 @@ export default function CircuitServices() {
             {nodes.map((node) => (
               <g key={`line-${node.id}`}>
                 {/* Ligne de fond (statique, semi-transparente) */}
-                <line 
-                  x1="50%" y1="50%" 
-                  x2={node.x} y2={node.y} 
-                  stroke="rgba(255,255,255,0.05)" 
-                  strokeWidth="2" 
+                <line
+                  x1="50%" y1="50%"
+                  x2={node.x} y2={node.y}
+                  stroke="rgba(255,255,255,0.05)"
+                  strokeWidth="2"
                 />
                 {/* Ligne animée (flux de données) via CSS pour éviter l'erreur Web Animations API */}
-                <line 
-                  x1="50%" y1="50%" 
-                  x2={node.x} y2={node.y} 
-                  stroke="#00E5FF" 
+                <line
+                  x1="50%" y1="50%"
+                  x2={node.x} y2={node.y}
+                  stroke="#00E5FF"
                   strokeWidth="2"
                   strokeDasharray="10 20"
                   strokeDashoffset="0"
@@ -119,22 +119,22 @@ export default function CircuitServices() {
             ))}
           </svg>
 
-          {/* Noeud Central (Quantum Soul / IA) */}
+          {/* Noeud Central (QuantumSoul / IA) */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-            <motion.div 
-              animate={{ 
+            <motion.div
+              animate={{
                 boxShadow: [
-                  "0 0 20px rgba(0,229,255,0.2)", 
-                  "0 0 60px rgba(0,229,255,0.6)", 
+                  "0 0 20px rgba(0,229,255,0.2)",
+                  "0 0 60px rgba(0,229,255,0.6)",
                   "0 0 20px rgba(0,229,255,0.2)"
-                ] 
+                ]
               }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               className="relative flex items-center justify-center w-20 h-20 md:w-28 md:h-28 bg-black border border-cyan-400/50 rounded-full backdrop-blur-xl"
             >
               <BrainCircuit className="w-10 h-10 md:w-14 md:h-14 text-cyan-400" />
               {/* Cercle pulsant externe */}
-              <motion.div 
+              <motion.div
                 animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
                 className="absolute inset-0 border border-cyan-400 rounded-full"
@@ -151,11 +151,11 @@ export default function CircuitServices() {
                 className="absolute z-10 flex flex-col items-center gap-2"
                 style={{ left: node.x, top: node.y, x: '-50%', y: '-50%' }}
                 animate={{ y: ["-10%", "10%", "-10%"] }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
                   ease: "easeInOut",
-                  delay: node.delay 
+                  delay: node.delay
                 }}
               >
                 <div className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-[#0D0D0D] border border-white/10 rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all duration-300 group cursor-pointer">

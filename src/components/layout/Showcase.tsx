@@ -5,7 +5,7 @@ import { GlowingEffect } from "@/components/ui/effects/glowing-effect";
 import { HoverBorderGradient } from "@/components/ui/effects/hover-border-gradient";
 import { Cloud, GitBranch, Cpu, MessageSquare } from "lucide-react";
 
-import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
+import { GlassButton } from "@/components/ui/button/apple-tahoe-liquid-glass-button";
 
 export default function Showcase() {
   const technologies = [
@@ -88,7 +88,7 @@ export default function Showcase() {
             Showcase Technologique
           </h2>
         </div>
-{/* effet a rajouter  */}
+        {/* effet a rajouter  */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-16">
           {technologies.map((tech, index) => (
             <ShowcaseCard
@@ -100,7 +100,7 @@ export default function Showcase() {
           ))}
         </div>
 
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <GlassButton
             aria-label="Découvrir notre stack technologique"
             className="text-white text-xs md:text-base font-semibold group"
@@ -108,7 +108,7 @@ export default function Showcase() {
             Découvrir notre stack technologique
             <svg aria-hidden="true" className="w-3 h-3 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
           </GlassButton>
-        </div>
+        </div> */}
       </div>
     </section>
   );
@@ -122,7 +122,7 @@ interface ShowcaseCardProps {
 
 const ShowcaseCard = ({ icon, title, description }: ShowcaseCardProps) => {
   const Icon = icon;
-  
+
   return (
     <div className="relative h-56 md:h-64 bg-transparent group perspective-1000">
       <div className="relative h-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-sm p-4 md:p-6 flex flex-col items-center justify-center text-center gap-3 md:gap-4 transition-all duration-500 group-hover:transform group-hover:scale-105 group-hover:rotate-x-2 group-hover:shadow-2xl">
@@ -134,7 +134,7 @@ const ShowcaseCard = ({ icon, title, description }: ShowcaseCardProps) => {
           inactiveZone={0.01}
           variant="white"
         />
-        
+
         <div className="relative z-10 flex flex-col items-center gap-3 md:gap-4">
           <Icon className="w-8 h-8 md:w-10 md:h-10 text-white mb-1 md:mb-2" />
           <h3 className="text-lg md:text-xl font-bold text-white">{title}</h3>

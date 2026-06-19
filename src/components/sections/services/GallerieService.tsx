@@ -9,7 +9,7 @@ const slides = [
   {
     id: 1,
     title: "Créations de Solutions Digitales (Web & Mobile) & Design",
-    description: "Transformez votre vision en réalité avec des applications web et mobiles performantes, intuitives et esthétiquement irréprochables. Chez Quantum Soul, nous concevons des expériences utilisateur (UX/UI) exceptionnelles, pensées pour engager votre audience, fidéliser vos clients et propulser votre marque dans l'ère digitale avec une identité visuelle forte.",
+    description: "Transformez votre vision en réalité avec des applications web et mobiles performantes, intuitives et esthétiquement irréprochables. Chez QuantumSoul, nous concevons des expériences utilisateur (UX/UI) exceptionnelles, pensées pour engager votre audience, fidéliser vos clients et propulser votre marque dans l'ère digitale avec une identité visuelle forte.",
     images: [
       "/images/services/Création d'applications web et mobile.jpeg",
       "/images/services/Création d'applications web et mobile_4.jpeg",
@@ -19,7 +19,7 @@ const slides = [
   {
     id: 2,
     title: "Automatisation Intelligente",
-    description: "Libérez le véritable potentiel de votre équipe en éliminant les tâches répétitives et chronophages. Nous optimisons vos processus métiers grâce à des workflows automatisés sur mesure. En connectant intelligemment vos outils du quotidien, Quantum Soul garantit à votre entreprise une efficacité décuplée, une réduction des erreurs et un gain de temps précieux.",
+    description: "Libérez le véritable potentiel de votre équipe en éliminant les tâches répétitives et chronophages. Nous optimisons vos processus métiers grâce à des workflows automatisés sur mesure. En connectant intelligemment vos outils du quotidien, QuantumSoul garantit à votre entreprise une efficacité décuplée, une réduction des erreurs et un gain de temps précieux.",
     images: [
       "/images/services/Automatisation & Ai 1 .png",
       "/images/services/Automatisation & Ai .png",
@@ -28,7 +28,7 @@ const slides = [
   },
   {
     id: 3,
-    title: "Intégration Intelligence Artificielle Sur Mesure",
+    title: "INTEGRATION D’INTELLIGENCE ARTIFICIELLE SUR MESURE",
     description: "Propulsez votre entreprise vers le futur en exploitant la puissance de l'IA. Nous intégrons des solutions d'Intelligence Artificielle parfaitement adaptées à votre secteur d'activité : agents conversationnels autonomes, analyse prédictive de données et bots intelligents. Révolutionnez vos services, anticipez les besoins de vos clients et devancez la concurrence.",
     images: [
       "/images/services/iPhone AI Agents 2.png",
@@ -46,9 +46,9 @@ function MobileImageSlider({ images, title }: { readonly images: string[], reado
   useEffect(() => {
     const interval = setInterval(() => {
       setIdx((prev) => (prev + 1) % images.length);
-    // --- TEMPS ENTRE CHAQUE IMAGE (MOBILE) ---
-    // 4500 = 4.5 secondes avant de passer à l'image suivante
-    }, 4500); 
+      // --- TEMPS ENTRE CHAQUE IMAGE (MOBILE) ---
+      // 4500 = 4.5 secondes avant de passer à l'image suivante
+    }, 4500);
     return () => clearInterval(interval);
   }, [images.length]);
 
@@ -82,12 +82,12 @@ export default function GallerieService() {
   // Gestion du diaporama pour la version Desktop
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => 
+      setCurrentImageIndex((prev) =>
         (prev + 1) % slides[activeSlide].images.length
       );
-    // --- TEMPS ENTRE CHAQUE IMAGE ---
-    // 4500 = 4.5 secondes avant de passer à l'image suivante (augmenté pour compenser la transition plus longue)
-    }, 4500); 
+      // --- TEMPS ENTRE CHAQUE IMAGE ---
+      // 4500 = 4.5 secondes avant de passer à l'image suivante (augmenté pour compenser la transition plus longue)
+    }, 4500);
     return () => clearInterval(interval);
   }, [activeSlide]);
 
@@ -98,12 +98,12 @@ export default function GallerieService() {
 
   return (
     <section className="relative w-full text-white z-10">
-      
+
       {/* ========================================== */}
       {/* VERSION DESKTOP (PC & Tablettes Paysage)   */}
       {/* ========================================== */}
       <div className="hidden lg:flex relative w-full items-start max-w-7xl mx-auto">
-        
+
         {/* Colonne de Gauche (Fixe / Sticky) - Images (50% de la largeur) */}
         <div className="sticky top-0 h-screen w-1/2 flex items-center justify-center p-8 xl:p-12">
           <div className="relative w-full h-[80vh] flex items-center justify-center">
@@ -158,15 +158,15 @@ export default function GallerieService() {
       {/* ========================================== */}
       <div className="lg:hidden flex flex-col w-full px-4 sm:px-8 pt-[5vh] pb-[15vh]">
         {slides.map((slide) => (
-          <div 
-            key={slide.id} 
+          <div
+            key={slide.id}
             className="h-[90vh] flex flex-col justify-center py-8"
           >
             {/* Haut : Diaporama d'images */}
             <div className="relative w-full h-[50%] mb-6 flex items-center justify-center">
               <MobileImageSlider images={slide.images} title={slide.title} />
             </div>
-            
+
             {/* Bas : Textes */}
             <div className="flex flex-col justify-start h-[45%] overflow-y-auto no-scrollbar pb-4">
               <h2 className="text-2xl sm:text-3xl font-bold font-geonova mb-4 text-white">

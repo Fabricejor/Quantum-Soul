@@ -9,7 +9,7 @@ import { SparklesCore } from "@/components/ui/effects/sparkles";
 export const metadata: Metadata = {
   title: "À propos",
   description:
-    "Découvrez l'histoire, la vision et l'équipe derrière Quantum Soul. Nous croyons en une symbiose entre l'humain et la machine pour transformer les entreprises.",
+    "Découvrez l'histoire, la vision et l'équipe derrière QuantumSoul. Nous croyons en une symbiose entre l'humain et la machine pour transformer les entreprises.",
 };
 
 export default function page() {
@@ -28,9 +28,11 @@ export default function page() {
         />
       </div>
       <AboutHero />
-      <Intro />
-      <NotreTeam />
-      <HistoireTimeline />
+      <div id="about-content">
+        <Intro />
+        <NotreTeam />
+        <HistoireTimeline />
+      </div>
     </main>
   );
 }

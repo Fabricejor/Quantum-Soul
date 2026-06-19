@@ -27,7 +27,7 @@ export async function POST(req: Request) {
 
     // Initialisation du modèle Gemini (gemini-2.5-flash est très rapide et performant)
     // On injecte ici notre Prompt Système (Marketing Memory) pour définir son comportement
-    const model = genAI.getGenerativeModel({ 
+    const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",
       systemInstruction: QUANTUM_SOUL_MARKETING_MEMORY
     });
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     if (history.length > 0 && history[0].role === "model") {
       history.unshift({
         role: "user",
-        parts: [{ text: "Bonjour, je visite le site de Quantum Soul." }]
+        parts: [{ text: "Bonjour, je visite le site de QuantumSoul." }]
       });
     }
 
@@ -67,9 +67,9 @@ export async function POST(req: Request) {
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Erreur inconnue";
     console.error("Erreur API Gemini:", errorMessage);
-    
+
     return NextResponse.json(
-      { 
+      {
         error: "Une erreur est survenue lors du traitement de votre demande.",
         details: errorMessage
       },

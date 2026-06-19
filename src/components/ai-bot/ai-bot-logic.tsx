@@ -10,9 +10,9 @@ export function useAiBotLogic() {
   const [isProcessing, setIsProcessing] = useState(false);
   // On initialise le chat avec le message de bienvenue de l'IA
   const [messages, setMessages] = useState<Message[]>([
-    { 
-      role: "ai", 
-      content: "Bonjour je suis le chat bot ia de quantum soul je suis la pour vous convaincre et vous aider a vous decider sur notre Startup" 
+    {
+      role: "ai",
+      content: "Bonjour je suis le chat bot ia de QuantumSoul je suis la pour vous convaincre et vous aider a vous decider sur notre Startup"
     }
   ]);
   const inputRef = useRef<HTMLInputElement>(null);

@@ -4,11 +4,11 @@ import React from 'react'
 import Link from 'next/link'
 import { BeamsBackground } from '@/components/ui/background/beams-background'
 import { ImpossibleCubeScene } from '@/components/ui/3d-models/impossible-cube'
-import { GlassButton } from '@/components/apple-tahoe-liquid-glass-button'
+import { GlassButton } from '@/components/ui/button/apple-tahoe-liquid-glass-button'
 
 export default function Hero() {
   return (
-    <section aria-label="Présentation Quantum Soul" className="relative w-full min-h-screen overflow-hidden bg-background flex items-center">
+    <section aria-label="Présentation QuantumSoul" className="relative w-full min-h-screen overflow-hidden bg-background flex items-center">
       <BeamsBackground>
         {/* Container: 100vh overall, content centered. 
             Mobile: flex-col-reverse to have Model on top (visually) or just change DOM order if simpler. 
@@ -29,50 +29,50 @@ export default function Hero() {
             This works.
         */}
         <div className="container mx-auto px-4 h-full flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12 pt-20 pb-24 md:py-0">
-          
+
           {/* Text Content - Left on Desktop, Bottom on Mobile */}
           <div className="flex-1 flex flex-col justify-center items-center md:items-start z-20 space-y-6 md:space-y-8 max-w-2xl text-center md:text-left">
-            
+
             {/* Tagline */}
             <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
-                    <span className="block font-geonova text-white mb-2">
-                        Quantum Soul
-                    </span>
-                    <span className="block text-2xl md:text-3xl lg:text-4xl text-white/90 font-sans mt-4 text-justify">
-                        Fusionnez votre entreprise avec l’intelligence artificielle.
-                    </span>
-                </h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
+                <span className="block font-geonova text-white mb-2">
+                  QuantumSoul
+                </span>
+                <span className="block text-2xl md:text-3xl lg:text-4xl text-white/90 font-sans mt-4 text-justify">
+                  Fusionnez votre entreprise avec l’intelligence artificielle.
+                </span>
+              </h1>
             </div>
 
             {/* Sous-texte */}
             <p className="text-base md:text-xl text-muted-foreground/80 max-w-xl leading-relaxed font-light text-justify">
-                Nous créons des solutions digitales intelligentes pour automatiser, intégrer et amplifier vos performances.
+              Nous créons des solutions digitales intelligentes pour automatiser, intégrer et amplifier vos performances.
             </p>
 
             {/* Boutons CTA */}
             <div className="flex flex-row gap-4 pt-4 md:pt-6 w-full justify-center md:justify-start">
-                {/* Bouton Principal - Liquid Glass Blue */}
-                <Link href="/solutions">
-                    <GlassButton 
-                        aria-label="Découvrir nos solutions"
-                        className="text-white text-xs md:text-base font-semibold group"
-                    >
-                        Nos solutions
-                        <svg aria-hidden="true" className="w-3 h-3 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                    </GlassButton>
-                </Link>
+              {/* Bouton Principal - Liquid Glass Blue */}
+              <Link href="/solutions">
+                <GlassButton
+                  aria-label="Découvrir nos solutions"
+                  className="text-white text-xs md:text-base font-semibold group"
+                >
+                  Nos solutions
+                  <svg aria-hidden="true" className="w-3 h-3 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                </GlassButton>
+              </Link>
 
-                {/* Bouton Secondaire - Liquid Glass Light */}
-                <Link href="/demo">
-                    <GlassButton 
-                        aria-label="Voir la démo"
-                        className="text-white text-xs md:text-base font-medium group"
-                    >
-                        Démo
-                        <svg aria-hidden="true" className="w-3 h-3 md:w-4 md:h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                    </GlassButton>
-                </Link>
+              {/* Bouton Secondaire - Liquid Glass Light */}
+              <Link href="/demo">
+                <GlassButton
+                  aria-label="Voir la démo"
+                  className="text-white text-xs md:text-base font-medium group"
+                >
+                  Démo
+                  <svg aria-hidden="true" className="w-3 h-3 md:w-4 md:h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </GlassButton>
+              </Link>
             </div>
 
           </div>
@@ -83,7 +83,7 @@ export default function Hero() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-cyan-500/10 rounded-full blur-[60px] md:blur-[100px] pointer-events-none" />
             <ImpossibleCubeScene />
           </div>
-          
+
         </div>
       </BeamsBackground>
     </section>

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
+import { GlassButton } from "@/components/ui/button/apple-tahoe-liquid-glass-button";
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 

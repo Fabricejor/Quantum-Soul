@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Linkedin, Globe } from "lucide-react";
 import Image from "next/image";
-import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
+import { GlassButton } from "@/components/ui/button/apple-tahoe-liquid-glass-button";
 
 type TeamMember = {
     name: string;
@@ -137,7 +137,7 @@ export default function NotreTeam() {
                                         <div className="relative w-[260px] h-[340px] rounded-[2rem] p-3 bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl flex flex-col justify-between group hover:border-white/20 transition-all duration-300">
                                             {/* Glow inside card */}
                                             <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-[2rem] pointer-events-none" />
-                                            
+
                                             {/* Image frame */}
                                             <div className="relative flex-1 w-full rounded-2xl overflow-hidden shadow-inner">
                                                 <Image
@@ -148,7 +148,7 @@ export default function NotreTeam() {
                                                     className="object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-500"
                                                 />
                                             </div>
-                                            
+
                                             {/* Polaroid/Card Footer */}
                                             <div className="mt-3 flex items-center justify-between px-2">
                                                 <span className="text-[10px] uppercase tracking-widest text-white/40 font-medium font-sans">QS Team</span>

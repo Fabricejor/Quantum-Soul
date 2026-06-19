@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { LimelightNav } from "@/components/ui/docks/limelight-nav";
-import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
+import { GlassButton } from "@/components/ui/button/apple-tahoe-liquid-glass-button";
 
 export default function Navbar() {
     const { scrollY } = useScroll();
@@ -82,9 +82,8 @@ export default function Navbar() {
                         ease: "easeInOut",
                     }}
                     aria-label="Navigation principale"
-                    className={`pointer-events-auto flex items-center justify-between px-4 md:px-8 text-foreground overflow-hidden ${
-                        isScrolled ? "navbar-liquid-active" : "navbar-liquid-inactive"
-                    }`}
+                    className={`pointer-events-auto flex items-center justify-between px-4 md:px-8 text-foreground overflow-hidden ${isScrolled ? "navbar-liquid-active" : "navbar-liquid-inactive"
+                        }`}
                 >
                     {/* LOGO (Gauche) */}
                     <motion.div
@@ -97,7 +96,7 @@ export default function Navbar() {
                             {/* Utilisation du logo BLANC car le fond est noir (#0D0D0D) */}
                             <Image
                                 src="/images/logo & icons/QS ID Noir Background Transparent.png"
-                                alt="Quantum Soul Logo"
+                                alt="QuantumSoul Logo"
                                 fill
                                 sizes="128px"
                                 className="object-contain"
@@ -115,11 +114,10 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     aria-current={isActive ? "page" : undefined}
-                                    className={`text-sm font-medium transition-all duration-300 uppercase tracking-wider font-geonova ${
-                                        isActive 
-                                            ? "text-cyan-400 -translate-y-1 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" 
-                                            : "text-muted-foreground hover:text-primary hover:-translate-y-0.5"
-                                    }`}
+                                    className={`text-sm font-medium transition-all duration-300 uppercase tracking-wider font-geonova ${isActive
+                                        ? "text-cyan-400 -translate-y-1 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                                        : "text-muted-foreground hover:text-primary hover:-translate-y-0.5"
+                                        }`}
                                 >
                                     {link.name}
                                 </Link>

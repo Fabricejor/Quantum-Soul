@@ -1,6 +1,6 @@
-# Quantum Soul
+# QuantumSoul
 
-Site de présentation pour Quantum Soul.
+Site de présentation pour QuantumSoul.
 
 ## Structure du projet
 

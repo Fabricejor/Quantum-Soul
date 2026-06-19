@@ -47,11 +47,10 @@ export default function AiBotDesign() {
         - Sur desktop : Flottant en bas à droite.
       */}
       <div
-        className={`fixed z-[9999] flex flex-col ${
-          isOpen
+        className={`fixed z-[9999] flex flex-col ${isOpen
             ? "inset-0 bg-[#05050A] md:bg-transparent md:inset-auto md:bottom-8 md:right-8 md:items-end"
             : "bottom-8 right-8 items-end hidden md:flex"
-        }`}
+          }`}
       >
         {/* Background Glows (seulement sur mobile quand ouvert) */}
         {isOpen && (
@@ -71,16 +70,16 @@ export default function AiBotDesign() {
               className="flex-1 w-full flex flex-col relative z-10 md:mb-4 md:w-[26rem] md:max-h-[65vh] md:rounded-[2rem] md:bg-white/[0.02] md:p-0 md:shadow-[0_8px_32px_rgba(0,0,0,0.4)] md:backdrop-blur-3xl md:border md:border-white/10 overflow-hidden"
               role="dialog"
               aria-modal="true"
-              aria-label="Chatbot Quantum Soul AI"
+              aria-label="Chatbot QuantumSoul AI"
             >
               {/* Header Mobile */}
               <div className="flex items-center justify-between p-6 md:hidden">
                 <button className="text-white/50 hover:text-white">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /></svg>
                 </button>
                 <div className="flex items-center justify-center px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 backdrop-blur-md">
                   <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 flex items-center gap-2">
-                    Quantum Soul AI <Sparkles size={14} className="text-purple-400" />
+                    QuantumSoul AI <Sparkles size={14} className="text-purple-400" />
                   </span>
                 </div>
                 <button onClick={handleClose} className="p-2 text-white/50 hover:text-white" aria-label="Fermer le chatbot">
@@ -100,7 +99,7 @@ export default function AiBotDesign() {
                     <p className="text-white/40 text-sm max-w-[80%]">Je suis là pour répondre à vos questions et vous accompagner.</p>
                   </div>
                 )}
-                
+
                 {messages.map((msg, idx) => (
                   <motion.div
                     key={idx}
@@ -113,16 +112,15 @@ export default function AiBotDesign() {
                         <div className="relative w-6 h-6 rounded-full overflow-hidden flex-shrink-0 bg-black/50 border border-white/10">
                           <Image src="/images/IA Animation/Qs AI Default.png" alt="AI" fill sizes="24px" className="object-cover" />
                         </div>
-                        <span className="text-xs font-medium text-white/50">Quantum Soul AI</span>
+                        <span className="text-xs font-medium text-white/50">QuantumSoul AI</span>
                       </div>
                     )}
-                    
+
                     <div
-                      className={`text-[15px] leading-relaxed break-words whitespace-pre-wrap ${
-                        msg.role === "user"
+                      className={`text-[15px] leading-relaxed break-words whitespace-pre-wrap ${msg.role === "user"
                           ? "bg-white/10 backdrop-blur-xl border border-white/10 text-white px-5 py-3 rounded-3xl rounded-tr-sm shadow-[0_4px_24px_rgba(0,0,0,0.2)] max-w-[85%]"
                           : "text-white/90 max-w-[95%] pl-9" // Le texte de l'IA n'a pas de bulle, juste du texte propre
-                      }`}
+                        }`}
                     >
                       {msg.content}
                     </div>
@@ -130,9 +128,9 @@ export default function AiBotDesign() {
                     {/* Actions sous le message IA (Like, Copy, etc.) */}
                     {msg.role === "ai" && (
                       <div className="flex items-center gap-4 mt-4 pl-9 text-white/30">
-                        <button className="hover:text-white/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></button>
-                        <button className="hover:text-white/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"/></svg></button>
-                        <button className="hover:text-white/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                        <button className="hover:text-white/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" /></svg></button>
+                        <button className="hover:text-white/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3" /></svg></button>
+                        <button className="hover:text-white/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg></button>
                       </div>
                     )}
                   </motion.div>
@@ -166,11 +164,10 @@ export default function AiBotDesign() {
               borderRadius: isOpen ? 9999 : 9999,
             }}
             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-            className={`relative flex items-center overflow-hidden mx-auto ${
-              isOpen
+            className={`relative flex items-center overflow-hidden mx-auto ${isOpen
                 ? "h-16 md:w-[26rem]"
                 : "h-16 cursor-pointer"
-            }`}
+              }`}
             onClick={handleOpen}
             aria-label={isOpen ? undefined : "Ouvrir le chatbot"}
           >
@@ -237,7 +234,7 @@ export default function AiBotDesign() {
                         className="h-full w-full bg-transparent text-[15px] text-white focus:outline-none disabled:opacity-50 relative z-10"
                       />
                     </div>
-                    
+
                     {/* Bouton Fermer (Croix) */}
                     <button
                       type="button"

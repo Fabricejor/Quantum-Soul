@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
+import { GlassButton } from "@/components/ui/button/apple-tahoe-liquid-glass-button";
 
 export interface FAQItemData {
   q: string;
@@ -14,6 +14,7 @@ export interface FAQWithSpiralProps {
   faqs?: FAQItemData[];
   ctaText?: string;
   ctaButtonText?: string;
+  onCtaClick?: () => void;
 }
 
 export default function FAQWithSpiral({
@@ -46,7 +47,8 @@ export default function FAQWithSpiral({
     },
   ],
   ctaText,
-  ctaButtonText
+  ctaButtonText,
+  onCtaClick
 }: FAQWithSpiralProps) {
   const spiralRef = useRef<HTMLDivElement | null>(null);
   const [panelOpen, setPanelOpen] = useState(false);
@@ -104,7 +106,7 @@ export default function FAQWithSpiral({
       ];
       const filtered = sample.filter(({ q, a }) => (q + a).toLowerCase().includes("yes"));
       console.assert(filtered.length === 1, "Filter should match one item containing 'yes'");
-    } catch {}
+    } catch { }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -225,8 +227,8 @@ export default function FAQWithSpiral({
       gradient:
         Math.random() > 0.6
           ? (["rainbow", "ocean", "grayscale", "neon"] as const)[
-              Math.floor(Math.random() * 4)
-            ]
+          Math.floor(Math.random() * 4)
+          ]
           : "none",
     }));
   };
@@ -286,7 +288,10 @@ export default function FAQWithSpiral({
               </h2>
             )}
             {ctaButtonText && (
-              <GlassButton className="text-white text-sm md:text-base font-semibold group">
+              <GlassButton 
+                onClick={onCtaClick}
+                className="text-white text-sm md:text-base font-semibold group"
+              >
                 {ctaButtonText}
                 <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
               </GlassButton>
@@ -296,7 +301,7 @@ export default function FAQWithSpiral({
 
         {/* Footer */}
         <footer className="mt-16 border-t border-white/10 pt-6 text-xs text-white/50 text-center md:text-left">
-          © {new Date().getFullYear()} Quantum Soul — L&apos;âme digitale de votre entreprise.
+          © {new Date().getFullYear()} QuantumSoul — L&apos;âme digitale de votre entreprise.
         </footer>
       </div>
 
@@ -305,15 +310,15 @@ export default function FAQWithSpiral({
         <aside className="fixed right-4 top-4 z-20 w-[320px] rounded-2xl border border-white/15 bg-black/70 p-4 backdrop-blur">
           <h3 className="mb-3 text-sm font-semibold tracking-wide text-white/80">Spiral Controls</h3>
           <div className="space-y-3 text-xs">
-            <Slider label="Points" min={100} max={2000} step={50} value={cfg.points} onChange={(v)=> setCfg({...cfg, points: v})} />
-            <Slider label="Dot radius" min={0.5} max={5} step={0.1} value={cfg.dotRadius} onChange={(v)=> setCfg({...cfg, dotRadius: v})} />
-            <Slider label="Duration" min={1} max={10} step={0.1} value={cfg.duration} onChange={(v)=> setCfg({...cfg, duration: v})} />
+            <Slider label="Points" min={100} max={2000} step={50} value={cfg.points} onChange={(v) => setCfg({ ...cfg, points: v })} />
+            <Slider label="Dot radius" min={0.5} max={5} step={0.1} value={cfg.dotRadius} onChange={(v) => setCfg({ ...cfg, dotRadius: v })} />
+            <Slider label="Duration" min={1} max={10} step={0.1} value={cfg.duration} onChange={(v) => setCfg({ ...cfg, duration: v })} />
 
-            <Toggle label="Pulse" value={cfg.pulseEffect} onChange={(v)=> setCfg({...cfg, pulseEffect: v})} />
-            <Slider label="Opacity min" min={0} max={1} step={0.05} value={cfg.opacityMin} onChange={(v)=> setCfg({...cfg, opacityMin: v})} />
-            <Slider label="Opacity max" min={0} max={1} step={0.05} value={cfg.opacityMax} onChange={(v)=> setCfg({...cfg, opacityMax: v})} />
-            <Slider label="Size min" min={0.1} max={2} step={0.1} value={cfg.sizeMin} onChange={(v)=> setCfg({...cfg, sizeMin: v})} />
-            <Slider label="Size max" min={0.1} max={3} step={0.1} value={cfg.sizeMax} onChange={(v)=> setCfg({...cfg, sizeMax: v})} />
+            <Toggle label="Pulse" value={cfg.pulseEffect} onChange={(v) => setCfg({ ...cfg, pulseEffect: v })} />
+            <Slider label="Opacity min" min={0} max={1} step={0.05} value={cfg.opacityMin} onChange={(v) => setCfg({ ...cfg, opacityMin: v })} />
+            <Slider label="Opacity max" min={0} max={1} step={0.05} value={cfg.opacityMax} onChange={(v) => setCfg({ ...cfg, opacityMax: v })} />
+            <Slider label="Size min" min={0.1} max={2} step={0.1} value={cfg.sizeMin} onChange={(v) => setCfg({ ...cfg, sizeMin: v })} />
+            <Slider label="Size max" min={0.1} max={3} step={0.1} value={cfg.sizeMax} onChange={(v) => setCfg({ ...cfg, sizeMax: v })} />
 
             <Select
               label="Gradient"
@@ -328,7 +333,7 @@ export default function FAQWithSpiral({
                 { label: "Pastel", value: "pastel" },
                 { label: "Grayscale", value: "grayscale" },
               ]}
-              onChange={(v)=> setCfg({...cfg, gradient: v as "none" | "rainbow" | "sunset" | "ocean" | "fire" | "neon" | "pastel" | "grayscale"})}
+              onChange={(v) => setCfg({ ...cfg, gradient: v as "none" | "rainbow" | "sunset" | "ocean" | "fire" | "neon" | "pastel" | "grayscale" })}
             />
 
             <div className="flex gap-2">

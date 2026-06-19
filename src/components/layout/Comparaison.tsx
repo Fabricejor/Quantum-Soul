@@ -30,7 +30,7 @@ export default function Comparaison() {
 
   return (
     <section aria-label="Comparaison de performances" className="relative min-h-[60vh] md:min-h-[80vh] py-12 md:py-24 overflow-hidden flex flex-col items-center justify-center">
-      
+
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
         {/* Header Section with Video Icon */}
         <div className="text-center mb-10 md:mb-16 space-y-4 md:space-y-6 flex flex-col items-center">
@@ -59,7 +59,7 @@ export default function Comparaison() {
           </HoverBorderGradient>
 
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-geonova max-w-2xl px-2">
-            Boostez vos performances avec Quantum Soul
+            Boostez vos performances avec QuantumSoul
           </h2>
         </div>
 

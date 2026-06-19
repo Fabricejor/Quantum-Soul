@@ -5,7 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 
-import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
+import { GlassButton } from "@/components/ui/button/apple-tahoe-liquid-glass-button";
 
 export default function StudyCase() {
     const projects = [
@@ -49,16 +49,16 @@ export default function StudyCase() {
         },
     ];
 
-  return (
+    return (
         <section aria-label="Études de cas et portfolio" className="relative min-h-screen py-12 md:py-24 overflow-hidden flex flex-col justify-center">
-            
+
             <div className="container mx-auto px-4 relative z-10">
                 <div className="mb-10 md:mb-16">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-geonova mb-6">
                         Études de cas / Portfolio
                     </h2>
                 </div>
-{/* effet a rajouter  */}
+                {/* effet a rajouter  */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[250px]">
                     {projects.map((project, index) => (
                         <div
@@ -141,7 +141,7 @@ export default function StudyCase() {
                         <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                     </GlassButton>
                 </div>
-    </div>
+            </div>
         </section>
     );
 }

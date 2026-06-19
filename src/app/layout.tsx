@@ -28,11 +28,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://quantumsoul.fr"),
   title: {
-    default: "Quantum Soul — Solutions IA & Automatisation",
-    template: "%s | Quantum Soul",
+    default: "QuantumSoul — Solutions IA & Automatisation",
+    template: "%s | QuantumSoul",
   },
   description:
-    "Fusionnez votre entreprise avec l'intelligence artificielle. Quantum Soul crée des solutions digitales intelligentes pour automatiser, intégrer et amplifier vos performances.",
+    "Fusionnez votre entreprise avec l'intelligence artificielle. QuantumSoul crée des solutions digitales intelligentes pour automatiser, intégrer et amplifier vos performances.",
   keywords: [
     "intelligence artificielle",
     "automatisation",
@@ -40,19 +40,19 @@ export const metadata: Metadata = {
     "chatbot",
     "machine learning",
     "développement web",
-    "Quantum Soul",
+    "QuantumSoul",
     "solutions digitales",
     "analyse prédictive",
     "intégration API",
   ],
-  authors: [{ name: "Quantum Soul" }],
-  creator: "Quantum Soul",
+  authors: [{ name: "QuantumSoul" }],
+  creator: "QuantumSoul",
   openGraph: {
     type: "website",
     locale: "fr_FR",
     url: "https://quantumsoul.fr",
-    siteName: "Quantum Soul",
-    title: "Quantum Soul — Solutions IA & Automatisation",
+    siteName: "QuantumSoul",
+    title: "QuantumSoul — Solutions IA & Automatisation",
     description:
       "Fusionnez votre entreprise avec l'intelligence artificielle. Solutions digitales intelligentes pour automatiser, intégrer et amplifier vos performances.",
     images: [
@@ -60,13 +60,13 @@ export const metadata: Metadata = {
         url: "/images/logo & icons/QS ID Blanc Background Transparent.png",
         width: 1200,
         height: 630,
-        alt: "Quantum Soul Logo",
+        alt: "QuantumSoul Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Quantum Soul — Solutions IA & Automatisation",
+    title: "QuantumSoul — Solutions IA & Automatisation",
     description:
       "Fusionnez votre entreprise avec l'intelligence artificielle.",
     images: ["/images/logo & icons/QS ID Blanc Background Transparent.png"],
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/images/logo%20&%20icons/Logo%20Q%20Blanc%20Icone.png",
   },
 };
 
@@ -100,7 +100,7 @@ export default function RootLayout({
         <ClientLayout>
           <Navbar />
           {children}
-          <Footer/>
+          <Footer />
           <AiBotDesign />
         </ClientLayout>
       </body>

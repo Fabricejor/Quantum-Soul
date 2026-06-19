@@ -1,8 +1,17 @@
+"use client";
+
 import React from "react";
 import { Scene } from "@/components/ui/background/hero-section";
-import { GlassButton } from "@/components/apple-tahoe-liquid-glass-button";
+import { GlassButton } from "@/components/ui/button/apple-tahoe-liquid-glass-button";
 
 export default function RealisationHero() {
+  const handleScroll = () => {
+    const nextSection = document.getElementById("realisations-content");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-background text-white">
       {/* Background 3D scene */}
@@ -15,7 +24,7 @@ export default function RealisationHero() {
       <div className="relative z-10 flex min-h-screen items-center justify-center px-4">
         <div className="max-w-4xl text-center space-y-6">
           <span className="inline-flex items-center rounded-full bg-white/5 px-4 py-1 text-xs md:text-sm uppercase tracking-[0.2em] text-white/60 border border-white/10 backdrop-blur-md">
-            Réalisations Quantum Soul
+            Réalisations QuantumSoul
           </span>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight md:leading-tight font-geonova">
             Découvrez toutes nos réalisations
@@ -24,24 +33,25 @@ export default function RealisationHero() {
             Explorez les projets que nous avons conçus avec nos clients&nbsp;:
             expériences numériques, automatisations et solutions IA pensées pour la performance.
           </p>
-          
+
           {/* Call to Action Button - Liquid Glass Style */}
           <div className="flex justify-center pt-4">
-            <GlassButton 
+            <GlassButton
+              onClick={handleScroll}
               className="text-white text-xs md:text-base font-semibold group"
             >
               Voir plus
-              <svg 
-                className="w-3 h-3 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" 
-                fill="none" 
-                stroke="currentColor" 
+              <svg
+                className="w-3.5 h-3.5 md:w-4 md:h-4 transition-transform group-hover:translate-y-1"
+                fill="none"
+                stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M9 5l7 7-7 7" 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
                 />
               </svg>
             </GlassButton>

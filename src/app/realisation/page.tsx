@@ -5,7 +5,7 @@ import RealisationContent from "./RealisationContent";
 export const metadata: Metadata = {
   title: "Réalisations",
   description:
-    "Découvrez nos projets et réalisations : applications web, mobile, e-commerce, intégration IA. Portfolio de Quantum Soul et études de cas clients.",
+    "Découvrez nos projets et réalisations : applications web, mobile, e-commerce, intégration IA. Portfolio de QuantumSoul et études de cas clients.",
 };
 
 export default function RealisationPage() {

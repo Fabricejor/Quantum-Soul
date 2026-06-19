@@ -46,24 +46,26 @@ export default function RealisationContent() {
           />
         </div>
         <RealisationHero />
-        <Marquee speed={30} className="!mt-0 py-8" pauseOnHover>
-          {logos.map((logo, index) => (
-            <div key={index} className="mx-12 flex items-center justify-center">
-              <div className="relative h-16 w-32 md:h-20 md:w-40 transition-all duration-500 hover:scale-110 opacity-80 hover:opacity-100">
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  fill
-                  sizes="(max-width: 768px) 128px, 160px"
-                  className="object-contain"
-                />
+        <div id="realisations-content">
+          <Marquee speed={30} className="!mt-0 py-8" pauseOnHover>
+            {logos.map((logo, index) => (
+              <div key={index} className="mx-12 flex items-center justify-center">
+                <div className="relative h-16 w-32 md:h-20 md:w-40 transition-all duration-500 hover:scale-110 opacity-80 hover:opacity-100">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    fill
+                    sizes="(max-width: 768px) 128px, 160px"
+                    className="object-contain"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </Marquee>
-        <Filter />
-        <Projects />
-        <Articles />
+            ))}
+          </Marquee>
+          <Filter />
+          <Projects />
+          <Articles />
+        </div>
       </div>
     </FilterProvider>
   );

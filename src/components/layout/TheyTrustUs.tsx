@@ -9,7 +9,7 @@ const testimonials = [
   {
     name: "Alexandre D.",
     username: "@alex_tech",
-    body: "Quantum Soul a transformé notre approche du développement. L'intégration de l'IA est transparente et incroyablement puissante.",
+    body: "QuantumSoul a transformé notre approche du développement. L'intégration de l'IA est transparente et incroyablement puissante.",
     img: "/images/avatarGroup/avatar1.jpg",
   },
   {
@@ -67,13 +67,13 @@ const TestimonialCard = ({
     >
       <div className="flex flex-row items-center gap-2">
         <div className="relative h-8 w-8 md:h-10 md:w-10 overflow-hidden rounded-full border border-white/10">
-            <Image 
-                src={img} 
-                alt={name} 
-                fill 
-                sizes="40px"
-                className="object-cover" 
-            />
+          <Image
+            src={img}
+            alt={name}
+            fill
+            sizes="40px"
+            className="object-cover"
+          />
         </div>
         <div className="flex flex-col">
           <figcaption className="text-sm font-medium text-white">
@@ -90,11 +90,11 @@ const TestimonialCard = ({
 export default function TheyTrustUs() {
   return (
     <section aria-label="Témoignages clients" className="relative min-h-[70vh] md:min-h-[90vh] py-12 md:py-24 overflow-hidden flex flex-col items-center justify-center">
-      
+
       <div className="container relative z-10 flex flex-col items-center">
         <div className="text-center mb-8 space-y-4 px-4">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-geonova text-justify">
-            L&apos;impact de Quantum Soul : Retours d&apos;expérience
+            L&apos;impact de QuantumSoul : Retours d&apos;expérience
           </h2>
           <p className="text-white/60 text-sm md:text-base max-w-2xl mx-auto">
             Découvrez comment nous redéfinissons les standards de l&apos;industrie grâce à la confiance de nos partenaires.
@@ -112,7 +112,7 @@ export default function TheyTrustUs() {
               <TestimonialCard key={review.username} {...review} />
             ))}
           </Marquee>
-          
+
           {/* Gradient Edges */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 md:w-1/3 bg-gradient-to-r from-background dark:from-background"></div>
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 md:w-1/3 bg-gradient-to-l from-background dark:from-background"></div>

@@ -57,7 +57,7 @@ export default function Footer() {
                         </div>
 
                         <div className="w-full opacity-70 hover:opacity-100 transition-opacity duration-500 pt-8">
-                           <Limitation/>
+                            <Limitation />
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ export default function Footer() {
 
                 {/* Footer Content inside the "Planet" */}
                 <div className="relative z-20 bg-black pt-20 md:pt-32 pb-32 md:pb-12 px-4 md:px-8 overflow-hidden">
-                    
+
                     {/* Planet Image Decoration - Behind content but above black bg */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[800px] pointer-events-none select-none z-0 flex items-center justify-center opacity-80">
                         <div className="relative w-48 h-48 md:w-96 md:h-96 animate-spin-slow">
@@ -90,12 +90,12 @@ export default function Footer() {
                     </div>
 
                     <div className="container mx-auto flex flex-col items-center gap-12 relative z-10">
-                        
+
                         {/* Logo */}
                         <div className="relative w-24 h-12 md:w-40 md:h-20 opacity-80 hover:opacity-100 transition-opacity">
                             <Image
                                 src="/images/logo & icons/Logo Q Blanc Icone.png"
-                                alt="Quantum Soul Logo"
+                                alt="QuantumSoul Logo"
                                 fill
                                 sizes="(max-width: 768px) 96px, 160px"
                                 loading="lazy"
@@ -134,7 +134,7 @@ export default function Footer() {
 
                             {/* Legal Links & Copyright */}
                             <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-xs text-white/40 border-t border-white/10 pt-8 w-full justify-center">
-                                <span>© 2025 Quantum Soul. Where AI meets the Human spirit.</span>
+                                <span>© 2025 QuantumSoul. Where AI meets the Human spirit.</span>
                                 <div className="flex gap-6">
                                     {legalLinks.map((link) => (
                                         <Link
